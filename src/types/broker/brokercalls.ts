@@ -1,170 +1,170 @@
-import { ConfigRecord, ScheduleItem, RegionId, AccountId32, CoreMask, Finality } from "./v9430";
+import { ConfigRecord, ScheduleItem, RegionId, CoreMask, Finality } from "./v9430"
 
-interface ConfigureCall {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    config: ConfigRecord;
+class ConfigureCall {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    config: ConfigRecord | null = null;
 }
 
-interface ReserveCall {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    workload: ScheduleItem[];
+class ReserveCall {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    workload: ScheduleItem[] | null = null;
 }
 
-interface UnreserveCall {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    itemIndex: number;
+class UnreserveCall {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    itemIndex: number | null = null;
 }
 
-interface SetLeaseCall {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    task: number;
-    until: number;
+class SetLeaseCall {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    task: number | null = null;
+    until: number | null = null;
 }
 
-interface StartSalesCall {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    initialPrice: bigint;
-    coreCount: number;
+class StartSalesCall {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    initialPrice: bigint | null = null;
+    coreCount: number | null = null;
 }
 
-interface PurchaseCall {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    priceLimit: bigint;
+class PurchaseCall {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    priceLimit: bigint | null = null;
 }
 
-interface RenewCall {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    core: number;
+class RenewCall {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    core: number | null = null;
 }
 
-interface TransferCall {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    regionId: RegionId;
-    newOwner: string;
+class TransferCall {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    regionId: RegionId | null = null;
+    newOwner: string | null = null;
 }
 
-interface PartitionCall {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    regionId: RegionId;
-    pivot: number;
+class PartitionCall {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    regionId: RegionId | null = null;
+    pivot: number | null = null;
 }
 
-interface InterlaceCall {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    regionId: RegionId;
-    pivot: CoreMask;
+class InterlaceCall {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    regionId: RegionId | null = null;
+    pivot: CoreMask | null = null;
 }
 
-interface AssignCall {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    regionId: RegionId;
-    task: number;
-    finality: Finality;
+class AssignCall {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    regionId: RegionId | null = null;
+    task: number | null = null;
+    finality: Finality | null = null;
 }
 
-interface PoolCall {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    regionId: RegionId;
-    payee: string;
-    finality: Finality;
+class PoolCall {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    regionId: RegionId | null = null;
+    payee: string | null = null;
+    finality: Finality | null = null;
 }
 
-interface ClaimRevenueCall {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    regionId: RegionId;
-    maxTimeslices: number;
+class ClaimRevenueCall {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    regionId: RegionId | null = null;
+    maxTimeslices: number | null = null;
 }
 
-interface PurchaseCreditCall {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    amount: bigint;
-    beneficiary: string;
+class PurchaseCreditCall {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    amount: bigint | null = null;
+    beneficiary: string | null = null;
 }
 
-interface DropRegionCall {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    regionId: RegionId;
+class DropRegionCall {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    regionId: RegionId | null = null;
 }
 
-interface DropContributionCall {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    regionId: RegionId;
+class DropContributionCall {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    regionId: RegionId | null = null;
 }
 
-interface DropHistoryCall {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    when: number;
+class DropHistoryCall {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    when: number | null = null;
 }
 
-interface DropRenewalCall {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    core: number;
-    when: number;
+class DropRenewalCall {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    core: number | null = null;
+    when: number | null = null;
 }
 
-interface RequestCoreCountCall {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    coreCount: number;
+class RequestCoreCountCall {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    coreCount: number | null = null;
 }
 
-// Export all interfaces
+// Export all classs
 export {
     ConfigureCall,
     ReserveCall,

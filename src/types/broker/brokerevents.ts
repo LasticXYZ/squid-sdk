@@ -1,5 +1,5 @@
 
-import { CoreAssignment, ScheduleItem, RegionId, AccountId32 } from "./v9430"
+import { CoreAssignment, ScheduleItem, RegionId } from "./v9430"
 
 class HistoryInitializedEvent {
     id: string | null = null;

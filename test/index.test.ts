@@ -4,6 +4,7 @@ import { parsePath, pathToRequest } from '../src/rest/path'
 import { extendFields, getFields, includeBurned } from '../src/clients/defaults'
 import { 
     BaseEvent,
+    GraphLike,
     SaleInitializedEvent
 } from '../src/types'
 
@@ -47,19 +48,6 @@ describe('UNIQUERY UTILS', () => {
       )
     })
 
-  })
-
-  describe('test eventAllSaleInitialized', () => {
-    it('should fetch data successfully', async () => { // Marked as async
-      const client = getClient()
-      const query = client.eventAllSaleInitialized()
-
-      // Assuming you're testing the fetch operation's result
-      const result = await client.fetch(query)
-      console.log(JSON.stringify(result, null, 2));
-
-      expect(result).toHaveProperty('data.event')
-    })
   })
 
   describe('test2 eventAllSaleInitialized', () => {
@@ -107,6 +95,19 @@ describe('UNIQUERY UTILS', () => {
 
     });
   });
+
+  describe('test eventAllSaleInitialized', () => {
+    it('should fetch data successfully', async () => { // Marked as async
+      const client = getClient()
+      const query = client.eventAllSaleInitialized()
+
+      // Assuming you're testing the fetch operation's result
+      const result: GraphLike<SaleInitializedEvent[]> = await client.fetch(query)
+      console.log(result.data.event);
+
+      expect(result).toHaveProperty('data.event')
+    })
+  })
   
 
 
