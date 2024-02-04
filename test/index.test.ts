@@ -2,7 +2,10 @@ import { expect, it, describe } from 'vitest'
 import { getClient, getUrl } from '../src'
 import { parsePath, pathToRequest } from '../src/rest/path'
 import { extendFields, getFields, includeBurned } from '../src/clients/defaults'
-import { BaseEvent } from '../src/types'
+import { 
+    BaseEvent,
+    SaleInitializedEvent
+} from '../src/types'
 
 
 describe('UNIQUERY UTILS', () => {
@@ -25,8 +28,27 @@ describe('UNIQUERY UTILS', () => {
 
   describe('getFields', () => {
     it('should return default fields', () => {
-      const fields = getFields<BaseEvent>()
+      const fields = getFields<BaseEvent>('BaseEvent')
       expect(fields).toStrictEqual(['id', 'blockNumber', 'timestamp'])
+    })
+
+    it('should return extended fields', () => {
+      const fields = getFields<SaleInitializedEvent>('SaleInitializedEvent')
+      expect(fields).toStrictEqual(
+        [
+          'id',
+          'blockNumber',
+          'timestamp',
+          'coresOffered',
+          'idealCoresSold',
+          'leadinLength',
+          'regionBegin',
+          'regionEnd',
+          'regularPrice',
+          'saleStart',
+          'startPrice'
+        ]
+      )
     })
 
   })
@@ -56,6 +78,14 @@ describe('UNIQUERY UTILS', () => {
             id
             blockNumber
             timestamp
+            coresOffered
+            idealCoresSold
+            leadinLength
+            regionBegin
+            regionEnd
+            regularPrice
+            saleStart
+            startPrice
           }
         }`,
         variables: {}
@@ -66,13 +96,21 @@ describe('UNIQUERY UTILS', () => {
             id
             blockNumber
             timestamp
+            coresOffered
+            idealCoresSold
+            leadinLength
+            regionBegin
+            regionEnd
+            regularPrice
+            saleStart
+            startPrice
           }
         }`,
         variables: {}
       });
   
       const result = await client.fetch(query);
-      console.log(JSON.stringify(result, null, 2));
+      //console.log(JSON.stringify(result, null, 2));
 
     });
   });
