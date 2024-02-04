@@ -7,7 +7,8 @@ import {
     GraphLike,
     SaleInitializedEvent,
     PurchasedEvent,
-    SalesStartedEvent
+    SalesStartedEvent,
+    RenewableEvent
 } from '../src/types'
 
 
@@ -69,6 +70,16 @@ describe('UNIQUERY UTILS', () => {
       )
     })
 
+    it('should return recursive fields 2', () => {
+      const fields = getRecursiveFields(RenewableEvent)
+      expect(fields).toStrictEqual(
+        {
+          "id": "id",
+          "blockNumber": "blockNumber",
+        }
+      )
+    })
+
   })
 
   describe('test2 eventAllSaleInitialized', () => {
@@ -119,10 +130,10 @@ describe('UNIQUERY UTILS', () => {
       { func: client.eventAllSaleInitialized, type: 'SaleInitializedEvent' },
       { func: client.eventAllSalesStarted, type: 'SalesStartedEvent' },
       { func: client.eventAllPurchased, type: 'PurchasedEvent' },
-      { func: client.eventAllRenewable, type: 'RenewableEvent' },
-      // { func: client.eventAllRenewed, type: 'RenewedEvent' },
-      // { func: client.eventAllTransferred, type: 'TransferredEvent' },
-      // { func: client.eventAllPartitioned, type: 'PartitionedEvent' },
+      //{ func: client.eventAllRenewable, type: 'RenewableEvent' },
+      { func: client.eventAllRenewed, type: 'RenewedEvent' },
+      { func: client.eventAllTransferred, type: 'TransferredEvent' },
+      //{ func: client.eventAllPartitioned, type: 'PartitionedEvent' },
     ];
   
 

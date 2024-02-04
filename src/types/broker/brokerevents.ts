@@ -61,8 +61,6 @@ class ScheduleItem {
     assignment: number | null
 
     constructor() {
-        // Ensure properties are initialized in a way that allows type checking
-        // For example, initializing with default values
         this.mask = '';
         this.assignment = 0;
     }
@@ -75,7 +73,11 @@ class RenewableEvent {
     core: number | null = null;
     price: bigint | null = null;
     begin: number | null = null;
-    workload: ScheduleItem[] | null = null;
+    workload: ScheduleItem[] = [];
+
+    constructor() {
+        this.workload.push(new ScheduleItem());
+    }
 }
 
 class RenewedEvent {
@@ -88,7 +90,7 @@ class RenewedEvent {
     core: number | null = null;
     begin: number | null = null;
     duration: number | null = null;
-    workload: ScheduleItem[] | null = null;
+    workload: ScheduleItem[] = new Array<ScheduleItem>();
 }
 
 class TransferredEvent {
@@ -153,7 +155,7 @@ class ReservationMadeEvent {
     blockNumber: number | null = null;
     timestamp: Date | null = null;
     index: number | null = null;
-    workload: ScheduleItem[] | null = null;
+    workload: ScheduleItem[] = new Array<ScheduleItem>();
 }
 
 class ReservationCancelledEvent {
@@ -161,7 +163,7 @@ class ReservationCancelledEvent {
     blockNumber: number | null = null;
     timestamp: Date | null = null;
     index: number | null = null;
-    workload: ScheduleItem[] | null = null;
+    workload: ScheduleItem[] = new Array<ScheduleItem>();
 }
 
 class LeasedEvent {

@@ -71,21 +71,21 @@ class SquidClient {
   constructor() {
   }
 
-  //collectionById(id: string, fields?: ObjProp<SquidCollection>): GraphQuery {
-  //   const toQuery = getFields(fields)
-  //   return build('collection: collectionEntityById', toQuery, {
+  //collectionById(id: string, recFields?: ObjProp<SquidCollection>): GraphQuery {
+  //   const toQuery = getrecFields(recFields)
+  //   return advancedBuild('collection: collectionEntityById', toQuery, {
   //     id: { type: 'String', required: true, value: id, name: 'id' },
   //   })
   // }
 
   eventAllHistoryInitialized(): GraphQuery {
-    const fields = getFields(HistoryInitializedEvent)
-    return build('event: historyInitializeds', fields, {})
+    const recFields = getRecursiveFields(HistoryInitializedEvent)
+    return advancedBuild('event: historyInitializeds', recFields, {})
   }
 
   eventAllSaleInitialized(): GraphQuery {
-    const fields = getFields(SaleInitializedEvent)
-    return build('event: saleInitializeds', fields, {})
+    const recFields = getRecursiveFields(SaleInitializedEvent)
+    return advancedBuild('event: saleInitializeds', recFields, {})
   }
 
   eventAllSalesStarted(): GraphQuery {
@@ -99,218 +99,218 @@ class SquidClient {
   }
 
   eventAllRenewable(): GraphQuery {
-    const fields = getFields(RenewableEvent)
-    return build('event: renewables', fields, {})
+    const recFields = getRecursiveFields(RenewableEvent)
+    return advancedBuild('event: renewables', recFields, {})
   }
 
   eventAllRenewed(): GraphQuery {
-    const fields = getFields(RenewedEvent)
-    return build('event: reneweds', fields, {})
+    const recFields = getRecursiveFields(RenewedEvent)
+    return advancedBuild('event: reneweds', recFields, {})
   }
 
   eventAllTransferred(): GraphQuery {
-    const fields = getFields(TransferredEvent)
-    return build('event: transferreds', fields, {})
+    const recFields = getRecursiveFields(TransferredEvent)
+    return advancedBuild('event: transferreds', recFields, {})
   }
 
   eventAllPartitioned(): GraphQuery {
-    const fields = getFields(PartitionedEvent)
-    return build('event: partitioneds', fields, {})
+    const recFields = getRecursiveFields(PartitionedEvent)
+    return advancedBuild('event: partitioneds', recFields, {})
   }
 
   eventAllInterlaced(): GraphQuery {
-    const fields = getFields(InterlacedEvent)
-    return build('event: interlaceds', fields, {})
+    const recFields = getRecursiveFields(InterlacedEvent)
+    return advancedBuild('event: interlaceds', recFields, {})
   }
 
   eventAllAssigned(): GraphQuery {
-    const fields = getFields(AssignedEvent)
-    return build('event: assigneds', fields, {})
+    const recFields = getRecursiveFields(AssignedEvent)
+    return advancedBuild('event: assigneds', recFields, {})
   }
 
   eventAllPooled(): GraphQuery {
-    const fields = getFields(PooledEvent)
-    return build('event: pooleds', fields, {})
+    const recFields = getRecursiveFields(PooledEvent)
+    return advancedBuild('event: pooleds', recFields, {})
   }
 
   eventAllCoreCountRequested(): GraphQuery {
-    const fields = getFields(CoreCountRequestedEvent)
-    return build('event: coreCountRequesteds', fields, {})
+    const recFields = getRecursiveFields(CoreCountRequestedEvent)
+    return advancedBuild('event: coreCountRequesteds', recFields, {})
   }
 
   eventAllCoreCountChanged(): GraphQuery {
-    const fields = getFields(CoreCountChangedEvent)
-    return build('event: coreCountChangeds', fields, {})
+    const recFields = getRecursiveFields(CoreCountChangedEvent)
+    return advancedBuild('event: coreCountChangeds', recFields, {})
   }
 
   eventAllReservationMade(): GraphQuery {
-    const fields = getFields(ReservationMadeEvent)
-    return build('event: reservationMades', fields, {})
+    const recFields = getRecursiveFields(ReservationMadeEvent)
+    return advancedBuild('event: reservationMades', recFields, {})
   }
 
   eventAllReservationCancelled(): GraphQuery {
-    const fields = getFields(ReservationCancelledEvent)
-    return build('event: reservationCancelleds', fields, {})
+    const recFields = getRecursiveFields(ReservationCancelledEvent)
+    return advancedBuild('event: reservationCancelleds', recFields, {})
   }
 
   eventAllLeased(): GraphQuery {
-    const fields = getFields(LeasedEvent)
-    return build('event: leaseds', fields, {})
+    const recFields = getRecursiveFields(LeasedEvent)
+    return advancedBuild('event: leaseds', recFields, {})
   }
 
   eventAllLeaseEnding(): GraphQuery {
-    const fields = getFields(LeaseEndingEvent)
-    return build('event: leaseEndings', fields, {})
+    const recFields = getRecursiveFields(LeaseEndingEvent)
+    return advancedBuild('event: leaseEndings', recFields, {})
   }
 
   eventAllRevenueClaimBegun(): GraphQuery {
-    const fields = getFields(RevenueClaimBegunEvent)
-    return build('event: revenueClaimBeguns', fields, {})
+    const recFields = getRecursiveFields(RevenueClaimBegunEvent)
+    return advancedBuild('event: revenueClaimBeguns', recFields, {})
   }
 
   eventAllRevenueClaimItem(): GraphQuery {
-    const fields = getFields(RevenueClaimItemEvent)
-    return build('event: revenueClaimItems', fields, {})
+    const recFields = getRecursiveFields(RevenueClaimItemEvent)
+    return advancedBuild('event: revenueClaimItems', recFields, {})
   }
 
   eventAllRevenueClaimPaid(): GraphQuery {
-    const fields = getFields(RevenueClaimPaidEvent)
-    return build('event: revenueClaimPaids', fields, {})
+    const recFields = getRecursiveFields(RevenueClaimPaidEvent)
+    return advancedBuild('event: revenueClaimPaids', recFields, {})
   }
 
   eventAllCreditPurchased(): GraphQuery {
-    const fields = getFields(CreditPurchasedEvent)
-    return build('event: creditPurchaseds', fields, {})
+    const recFields = getRecursiveFields(CreditPurchasedEvent)
+    return advancedBuild('event: creditPurchaseds', recFields, {})
   }
 
   eventAllRegionDropped(): GraphQuery {
-    const fields = getFields(RegionDroppedEvent)
-    return build('event: regionDroppeds', fields, {})
+    const recFields = getRecursiveFields(RegionDroppedEvent)
+    return advancedBuild('event: regionDroppeds', recFields, {})
   }
 
   eventAllContributionDropped(): GraphQuery {
-    const fields = getFields(ContributionDroppedEvent)
-    return build('event: contributionDroppeds', fields, {})
+    const recFields = getRecursiveFields(ContributionDroppedEvent)
+    return advancedBuild('event: contributionDroppeds', recFields, {})
   }
 
   eventAllHistoryDropped(): GraphQuery {
-    const fields = getFields(HistoryDroppedEvent)
-    return build('event: historyDroppeds', fields, {})
+    const recFields = getRecursiveFields(HistoryDroppedEvent)
+    return advancedBuild('event: historyDroppeds', recFields, {})
   }
 
   eventAllHistoryIgnored(): GraphQuery {
-    const fields = getFields(HistoryIgnoredEvent)
-    return build('event: historyIgnoreds', fields, {})
+    const recFields = getRecursiveFields(HistoryIgnoredEvent)
+    return advancedBuild('event: historyIgnoreds', recFields, {})
   }
 
   eventAllClaimsReady(): GraphQuery {
-    const fields = getFields(ClaimsReadyEvent)
-    return build('event: claimsReadys', fields, {})
+    const recFields = getRecursiveFields(ClaimsReadyEvent)
+    return advancedBuild('event: claimsReadys', recFields, {})
   }
 
   eventAllCoreAssigned(): GraphQuery {
-    const fields = getFields(CoreAssignedEvent)
-    return build('event: coreAssigneds', fields, {})
+    const recFields = getRecursiveFields(CoreAssignedEvent)
+    return advancedBuild('event: coreAssigneds', recFields, {})
   }
 
   eventAllAllowedRenewalDropped(): GraphQuery {
-    const fields = getFields(AllowedRenewalDroppedEvent)
-    return build('event: allowedRenewalDroppeds', fields, {})
+    const recFields = getRecursiveFields(AllowedRenewalDroppedEvent)
+    return advancedBuild('event: allowedRenewalDroppeds', recFields, {})
   }
 
   callAllConfigure(): GraphQuery {
-    const fields = getFields(ConfigureCall)
-    return build('call: configures', fields, {})
+    const recFields = getRecursiveFields(ConfigureCall)
+    return advancedBuild('call: configures', recFields, {})
   }
 
   callAllReserve(): GraphQuery {
-    const fields = getFields(ReserveCall)
-    return build('call: reserves', fields, {})
+    const recFields = getRecursiveFields(ReserveCall)
+    return advancedBuild('call: reserves', recFields, {})
   }
 
   callAllUnreserve(): GraphQuery {
-    const fields = getFields(UnreserveCall)
-    return build('call: unreserves', fields, {})
+    const recFields = getRecursiveFields(UnreserveCall)
+    return advancedBuild('call: unreserves', recFields, {})
   }
 
   callAllSetLease(): GraphQuery {
-    const fields = getFields(SetLeaseCall)
-    return build('call: setLeases', fields, {})
+    const recFields = getRecursiveFields(SetLeaseCall)
+    return advancedBuild('call: setLeases', recFields, {})
   }
 
   callAllStartSales(): GraphQuery {
-    const fields = getFields(StartSalesCall)
-    return build('call: startSaless', fields, {})
+    const recFields = getRecursiveFields(StartSalesCall)
+    return advancedBuild('call: startSaless', recFields, {})
   }
 
   callAllPurchase(): GraphQuery {
-    const fields = getFields(PurchaseCall)
-    return build('call: purchases', fields, {})
+    const recFields = getRecursiveFields(PurchaseCall)
+    return advancedBuild('call: purchases', recFields, {})
   }
 
   callAllRenew(): GraphQuery {
-    const fields = getFields(RenewCall)
-    return build('call: renews', fields, {})
+    const recFields = getRecursiveFields(RenewCall)
+    return advancedBuild('call: renews', recFields, {})
   }
 
   callAllTransfer(): GraphQuery {
-    const fields = getFields(TransferCall)
-    return build('call: transfers', fields, {})
+    const recFields = getRecursiveFields(TransferCall)
+    return advancedBuild('call: transfers', recFields, {})
   }
 
   callAllPartition(): GraphQuery {
-    const fields = getFields(PartitionCall)
-    return build('call: partitions', fields, {})
+    const recFields = getRecursiveFields(PartitionCall)
+    return advancedBuild('call: partitions', recFields, {})
   }
 
   callAllInterlace(): GraphQuery {
-    const fields = getFields(InterlaceCall)
-    return build('call: interlaces', fields, {})
+    const recFields = getRecursiveFields(InterlaceCall)
+    return advancedBuild('call: interlaces', recFields, {})
   }
 
   callAllAssign(): GraphQuery {
-    const fields = getFields(AssignCall)
-    return build('call: assigns', fields, {})
+    const recFields = getRecursiveFields(AssignCall)
+    return advancedBuild('call: assigns', recFields, {})
   }
 
   callAllPool(): GraphQuery {
-    const fields = getFields(PoolCall)
-    return build('call: pools', fields, {})
+    const recFields = getRecursiveFields(PoolCall)
+    return advancedBuild('call: pools', recFields, {})
   }
 
   callAllClaimRevenue(): GraphQuery {
-    const fields = getFields(ClaimRevenueCall)
-    return build('call: claimRevenues', fields, {})
+    const recFields = getRecursiveFields(ClaimRevenueCall)
+    return advancedBuild('call: claimRevenues', recFields, {})
   }
 
   callAllPurchaseCredit(): GraphQuery {
-    const fields = getFields(PurchaseCreditCall)
-    return build('call: purchaseCredits', fields, {})
+    const recFields = getRecursiveFields(PurchaseCreditCall)
+    return advancedBuild('call: purchaseCredits', recFields, {})
   }
 
   callAllDropRegion(): GraphQuery {
-    const fields = getFields(DropRegionCall)
-    return build('call: dropRegions', fields, {})
+    const recFields = getRecursiveFields(DropRegionCall)
+    return advancedBuild('call: dropRegions', recFields, {})
   }
 
   callAllDropContribution(): GraphQuery {
-    const fields = getFields(DropContributionCall)
-    return build('call: dropContributions', fields, {})
+    const recFields = getRecursiveFields(DropContributionCall)
+    return advancedBuild('call: dropContributions', recFields, {})
   }
 
   callAllDropHistory(): GraphQuery {
-    const fields = getFields(DropHistoryCall)
-    return build('call: dropHistorys', fields, {})
+    const recFields = getRecursiveFields(DropHistoryCall)
+    return advancedBuild('call: dropHistorys', recFields, {})
   }
 
   callAllDropRenewal(): GraphQuery {
-    const fields = getFields(DropRenewalCall)
-    return build('call: dropRenewals', fields, {})
+    const recFields = getRecursiveFields(DropRenewalCall)
+    return advancedBuild('call: dropRenewals', recFields, {})
   }
 
   callAllRequestCoreCount(): GraphQuery {
-    const fields = getFields(RequestCoreCountCall)
-    return build('call: requestCoreCounts', fields, {})
+    const recFields = getRecursiveFields(RequestCoreCountCall)
+    return advancedBuild('call: requestCoreCounts', recFields, {})
   }
 
   fetch<D>(query: GraphQuery): Promise<GraphLike<D>> {

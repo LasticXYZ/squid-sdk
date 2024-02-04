@@ -51,7 +51,24 @@ export function getRecursiveFields<T>(Cls: new () => T): FieldList {
   
         // Determine if the propertyValue is an instance of a class (and not a primitive value)
         // This check is simplistic and may need refinement for complex cases
-        if (propertyValue !== null && typeof propertyValue === 'object') {
+        if (Array.isArray(propertyValue) && propertyValue.length > 0) {
+          // Assuming all elements in the array are of the same type, 
+          // take the first element to determine the structure.
+          // This is a simplification; in real scenarios, you might need to check all elements or adjust based on your data model.
+          const firstElement = propertyValue[0];
+          if (typeof firstElement === 'object' && firstElement !== null) {
+              const ElementClass = firstElement.constructor;
+              if (ElementClass !== Object) {
+                  acc[key] = getRecursiveFields(ElementClass as new () => unknown);
+              } else {
+                  acc[key] = 'Array<Object>';
+              }
+          } else {
+              // Handle arrays of primitive types
+              acc[key] = 'Array<Primitive>';
+          }
+      } 
+        else if (propertyValue !== null && typeof propertyValue === 'object') {
             // Attempt to get the constructor of the nested object
             const NestedClass = propertyValue.constructor;
             // Check if NestedClass is not the base Object class
