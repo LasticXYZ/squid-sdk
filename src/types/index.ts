@@ -1,7 +1,7 @@
 export type KeyOf<T> = keyof T
 export type ObjProp<T> = Array<KeyOf<T>>
 // FieldList is a type that can is array containing either a string or an object that contains a string array
-export type FieldList = Array<string | { [meta: string]: string[] }>
+export type FieldList = Array<string>
 
 export type Fields<T> = FieldList | ObjProp<T>
 export type KeyValue = {

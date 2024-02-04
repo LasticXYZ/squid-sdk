@@ -40,6 +40,25 @@ export function getFields<T>(cls: new () => T): string[] {
   return Object.keys(new cls());
 }
 
+type FieldList = string | { [key: string]: FieldList };
+
+export function getRecursiveFields<T>(cls: new () => T): FieldList {
+  const instance = new cls();
+  const fields = Object.keys(instance).reduce((acc, key) => {
+    const value = instance[key];
+    if (value !== null && typeof value === 'object') {
+      // If the value is an object (and not null), recurse.
+      // Assuming all nested objects are class instances or null for simplicity.
+      acc[key] = getRecursiveFields(() => value);
+    } else {
+      acc[key] = key; // Use the key name directly for non-object fields.
+    }
+    return acc;
+  }, {} as Record<string, FieldList>);
+  
+  return fields;
+}
+
 
 export function optionToQuery(
   options: QueryOptions,

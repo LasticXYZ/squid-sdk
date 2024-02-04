@@ -1,5 +1,5 @@
 {
-  "name": "@lastic/squid-sdk",
+  "name": "@lasticxyz/squid-sdk",
   "version": "0.0.1",
   "description": "GraphQL query builder for Lastic",
   "repository": "LasticXYZ/squid-sdk",

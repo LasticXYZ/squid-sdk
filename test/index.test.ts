@@ -55,43 +55,24 @@ describe('UNIQUERY UTILS', () => {
       const client = getClient();
       const query = {
         query: `query {
-          event: saleInitializeds {
-            id
+          event: purchaseds {
             blockNumber
+            duration
+            id
+            price
+            regionId {
+              begin
+              core
+              mask
+            }
             timestamp
-            coresOffered
-            idealCoresSold
-            leadinLength
-            regionBegin
-            regionEnd
-            regularPrice
-            saleStart
-            startPrice
           }
         }`,
         variables: {}
       };
-      expect(query).toStrictEqual({
-        query: `query {
-          event: saleInitializeds {
-            id
-            blockNumber
-            timestamp
-            coresOffered
-            idealCoresSold
-            leadinLength
-            regionBegin
-            regionEnd
-            regularPrice
-            saleStart
-            startPrice
-          }
-        }`,
-        variables: {}
-      });
   
       const result = await client.fetch(query);
-      //console.log(JSON.stringify(result, null, 2));
+      console.log(JSON.stringify(result, null, 2));
 
     });
   });
@@ -108,7 +89,34 @@ describe('UNIQUERY UTILS', () => {
       expect(result).toHaveProperty('data.event')
     })
   })
+
+
+  describe('SquidClient Event Queries', () => {
+    const client = getClient();
+
+    const queryFunctions = [
+      { func: client.eventAllSaleInitialized, type: 'SaleInitializedEvent' },
+      // { func: client.eventAllSalesStarted, type: 'SalesStartedEvent' },
+      // { func: client.eventAllPurchased, type: 'PurchasedEvent' },
+      // { func: client.eventAllRenewable, type: 'RenewableEvent' },
+      // { func: client.eventAllRenewed, type: 'RenewedEvent' },
+      // { func: client.eventAllTransferred, type: 'TransferredEvent' },
+      // { func: client.eventAllPartitioned, type: 'PartitionedEvent' },
+    ];
   
 
+    queryFunctions.forEach(({ func, type }) => {
+      it(`should fetch data successfully for ${type}`, async () => {
+        const query = func.call(client); // Call the function on the client instance
+        const result = await client.fetch(query); // Fetch the data
+        
+        console.log(result.data.event); // Optional: Log for debugging
+        
+        expect(result).toHaveProperty('data.event'); // General assertion; adjust as needed
+      });
+    });
 
+    
+  });
+  
 })

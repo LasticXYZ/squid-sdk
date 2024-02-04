@@ -1,5 +1,5 @@
 
-import { CoreAssignment, ScheduleItem, RegionId } from "./v9430"
+import { CoreAssignment, ScheduleItem } from "./v9430"
 
 class HistoryInitializedEvent {
     id: string | null = null;
@@ -33,6 +33,12 @@ class SalesStartedEvent {
     extrinsicHash?: string | null = null;
     price: bigint | null = null;
     coreCount: number | null = null;
+}
+
+class RegionId {
+    begin: number | null = null;
+    core: number | null = null;
+    mask: string | null = null;
 }
 
 class PurchasedEvent {
