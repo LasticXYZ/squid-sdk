@@ -1,11 +1,13 @@
 import { expect, it, describe } from 'vitest'
 import { getClient, getUrl } from '../src'
 import { parsePath, pathToRequest } from '../src/rest/path'
-import { extendFields, getFields, includeBurned } from '../src/clients/defaults'
+import { extendFields, getFields, getRecursiveFields, includeBurned } from '../src/clients/defaults'
 import { 
     BaseEvent,
     GraphLike,
-    SaleInitializedEvent
+    SaleInitializedEvent,
+    PurchasedEvent,
+    SalesStartedEvent
 } from '../src/types'
 
 
@@ -48,6 +50,25 @@ describe('UNIQUERY UTILS', () => {
       )
     })
 
+    it('should return recursive fields', () => {
+      const fields = getRecursiveFields(PurchasedEvent)
+      expect(fields).toStrictEqual(
+        {
+          "id": "id",
+          "blockNumber": "blockNumber",
+          "timestamp": "timestamp",
+          "duration": "duration",
+          "price": "price",
+          "regionId": {
+            "begin": "begin",
+              "core": "core",
+              "mask": "mask",
+            },
+          "who": "who",
+        }
+      )
+    })
+
   })
 
   describe('test2 eventAllSaleInitialized', () => {
@@ -71,8 +92,8 @@ describe('UNIQUERY UTILS', () => {
         variables: {}
       };
   
-      const result = await client.fetch(query);
-      console.log(JSON.stringify(result, null, 2));
+      //const result = await client.fetch(query);
+      //console.log(JSON.stringify(result, null, 2));
 
     });
   });
@@ -84,7 +105,7 @@ describe('UNIQUERY UTILS', () => {
 
       // Assuming you're testing the fetch operation's result
       const result: GraphLike<SaleInitializedEvent[]> = await client.fetch(query)
-      console.log(result.data.event);
+      //console.log(result.data.event);
 
       expect(result).toHaveProperty('data.event')
     })
@@ -96,9 +117,9 @@ describe('UNIQUERY UTILS', () => {
 
     const queryFunctions = [
       { func: client.eventAllSaleInitialized, type: 'SaleInitializedEvent' },
-      // { func: client.eventAllSalesStarted, type: 'SalesStartedEvent' },
-      // { func: client.eventAllPurchased, type: 'PurchasedEvent' },
-      // { func: client.eventAllRenewable, type: 'RenewableEvent' },
+      { func: client.eventAllSalesStarted, type: 'SalesStartedEvent' },
+      { func: client.eventAllPurchased, type: 'PurchasedEvent' },
+      { func: client.eventAllRenewable, type: 'RenewableEvent' },
       // { func: client.eventAllRenewed, type: 'RenewedEvent' },
       // { func: client.eventAllTransferred, type: 'TransferredEvent' },
       // { func: client.eventAllPartitioned, type: 'PartitionedEvent' },
@@ -110,7 +131,7 @@ describe('UNIQUERY UTILS', () => {
         const query = func.call(client); // Call the function on the client instance
         const result = await client.fetch(query); // Fetch the data
         
-        console.log(result.data.event); // Optional: Log for debugging
+        //console.log(result.data.event); // Optional: Log for debugging
         
         expect(result).toHaveProperty('data.event'); // General assertion; adjust as needed
       });

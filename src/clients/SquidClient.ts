@@ -94,8 +94,8 @@ class SquidClient {
   }
 
   eventAllPurchased(): GraphQuery {
-    const fields = getFields(PurchasedEvent)
-    return build('event: purchaseds', fields, {})
+    const recFields = getRecursiveFields(PurchasedEvent)
+    return advancedBuild('event: purchaseds', recFields, {})
   }
 
   eventAllRenewable(): GraphQuery {

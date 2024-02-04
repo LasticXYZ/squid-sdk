@@ -40,24 +40,37 @@ export function getFields<T>(cls: new () => T): string[] {
   return Object.keys(new cls());
 }
 
-type FieldList = string | { [key: string]: FieldList };
+export type FieldList = { [key: string]: string | FieldList };
 
-export function getRecursiveFields<T>(cls: new () => T): FieldList {
-  const instance = new cls();
-  const fields = Object.keys(instance).reduce((acc, key) => {
-    const value = instance[key];
-    if (value !== null && typeof value === 'object') {
-      // If the value is an object (and not null), recurse.
-      // Assuming all nested objects are class instances or null for simplicity.
-      acc[key] = getRecursiveFields(() => value);
-    } else {
-      acc[key] = key; // Use the key name directly for non-object fields.
-    }
-    return acc;
-  }, {} as Record<string, FieldList>);
+export function getRecursiveFields<T>(Cls: new () => T): FieldList {
+    const instance = new Cls();
   
-  return fields;
+    const fields = Object.keys(instance).reduce((acc, key) => {
+        // Directly get the value of the property
+        const propertyValue = instance[key];
+  
+        // Determine if the propertyValue is an instance of a class (and not a primitive value)
+        // This check is simplistic and may need refinement for complex cases
+        if (propertyValue !== null && typeof propertyValue === 'object') {
+            // Attempt to get the constructor of the nested object
+            const NestedClass = propertyValue.constructor;
+            // Check if NestedClass is not the base Object class
+            if (NestedClass !== Object) {
+                acc[key] = getRecursiveFields(NestedClass as new () => unknown);
+            } else {
+                // Handle as a primitive value if NestedClass is the base Object class
+                acc[key] = key;
+            }
+        } else {
+            acc[key] = key;
+        }
+        return acc;
+    }, {} as FieldList);
+  
+    return fields;
 }
+
+
 
 
 export function optionToQuery(

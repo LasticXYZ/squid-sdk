@@ -1,5 +1,6 @@
 import { query } from 'gql-query-builder'
 import { FieldList, GraphQuery, KeyValue } from './types'
+import { FieldList as FieldListDif } from './clients/defaults';
 
 function build(
   operation: string,
@@ -15,10 +16,10 @@ function build(
 
 function advancedBuild(
   operation: string,
-  fields: FieldList,
+  fields: FieldListDif,
   variables?: KeyValue,
 ): GraphQuery {
-  const formatFields = (fields: FieldList): string => {
+  const formatFields = (fields: FieldListDif): string => {
     if (typeof fields === 'string') {
       return fields;
     } else {

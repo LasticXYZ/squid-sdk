@@ -1,6 +1,3 @@
-
-import { CoreAssignment, ScheduleItem } from "./v9430"
-
 class HistoryInitializedEvent {
     id: string | null = null;
     blockNumber: number | null = null;
@@ -36,9 +33,17 @@ class SalesStartedEvent {
 }
 
 class RegionId {
-    begin: number | null = null;
-    core: number | null = null;
-    mask: string | null = null;
+    begin: number | null
+    core: number | null
+    mask: string | null
+
+    constructor() {
+        // Ensure properties are initialized in a way that allows type checking
+        // For example, initializing with default values
+        this.begin = 0;
+        this.core = 0;
+        this.mask = '';
+    }
 }
 
 class PurchasedEvent {
@@ -46,9 +51,21 @@ class PurchasedEvent {
     blockNumber: number | null = null;
     timestamp: Date | null = null;
     who: string | null = null;
-    regionId: RegionId | null = null;
+    regionId: RegionId = new RegionId();
     price: bigint | null = null;
     duration: number | null = null;
+}
+
+class ScheduleItem {
+    mask: string | null
+    assignment: number | null
+
+    constructor() {
+        // Ensure properties are initialized in a way that allows type checking
+        // For example, initializing with default values
+        this.mask = '';
+        this.assignment = 0;
+    }
 }
 
 class RenewableEvent {
@@ -78,7 +95,7 @@ class TransferredEvent {
     id: string | null = null;
     blockNumber: number | null = null;
     timestamp: Date | null = null;
-    regionId: RegionId | null = null;
+    regionId: RegionId = new RegionId();
     duration: number | null = null;
     oldOwner: string | null = null;
     owner: string | null = null;
@@ -88,23 +105,23 @@ class PartitionedEvent {
     id: string | null = null;
     blockNumber: number | null = null;
     timestamp: Date | null = null;
-    oldRegionId: RegionId | null = null;
-    newRegionIds: [RegionId, RegionId] | null = null;
+    oldRegionId: RegionId = new RegionId();
+    newRegionIds: [RegionId, RegionId] = [new RegionId(), new RegionId()];
 }
 
 class InterlacedEvent {
     id: string | null = null;
     blockNumber: number | null = null;
     timestamp: Date | null = null;
-    oldRegionId: RegionId | null = null;
-    newRegionIds: [RegionId, RegionId] | null = null;
+    oldRegionId: RegionId = new RegionId();
+    newRegionIds: [RegionId, RegionId] = [new RegionId(), new RegionId()];
 }
 
 class AssignedEvent {
     id: string | null = null;
     blockNumber: number | null = null;
     timestamp: Date | null = null;
-    regionId: RegionId | null = null;
+    regionId: RegionId = new RegionId();
     duration: number | null = null;
     task: number | null = null;
 }
@@ -113,7 +130,7 @@ class PooledEvent {
     id: string | null = null;
     blockNumber: number | null = null;
     timestamp: Date | null = null;
-    regionId: RegionId | null = null;
+    regionId: RegionId = new RegionId();
     duration: number | null = null;
 }
 
@@ -201,7 +218,7 @@ class RegionDroppedEvent {
     id: string | null = null;
     blockNumber: number | null = null;
     timestamp: Date | null = null;
-    regionId: RegionId | null = null;
+    regionId: RegionId = new RegionId();
     duration: number | null = null;
 }
 
@@ -209,7 +226,7 @@ class ContributionDroppedEvent {
     id: string | null = null;
     blockNumber: number | null = null;
     timestamp: Date | null = null;
-    regionId: RegionId | null = null;
+    regionId: RegionId = new RegionId();
 }
 
 class HistoryDroppedEvent {
@@ -235,6 +252,11 @@ class ClaimsReadyEvent {
     when: number | null = null;
     systemPayout: bigint | null = null;
     privatePayout: bigint | null = null;
+}
+
+class CoreAssignment {
+    kind: string | null = null;
+    value: number | null = null;
 }
 
 class CoreAssignedEvent {
