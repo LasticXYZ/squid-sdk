@@ -1,5 +1,5 @@
 import { $fetch } from 'ofetch'
-import getUrl from '../indexers'
+import { getUrl } from '../indexers'
 import { getOptions } from '../indexers/utils'
 import build from '../queryBuilder'
 import {
@@ -9,11 +9,10 @@ import {
   KeyOf,
   ObjProp,
   QueryProps,
-  SquidCollection,
 } from '../types'
 
 import {
-  defaultEventField,
+  defaultField,
   genericCountQuery,
   getFields,
   includeBurned,
@@ -24,11 +23,15 @@ class SquidClient {
   constructor() {
   }
 
-  collectionById(id: string, fields?: ObjProp<SquidCollection>): GraphQuery {
-    const toQuery = getFields(fields)
-    return build('collection: collectionEntityById', toQuery, {
-      id: { type: 'String', required: true, value: id, name: 'id' },
-    })
+  //collectionById(id: string, fields?: ObjProp<SquidCollection>): GraphQuery {
+  //   const toQuery = getFields(fields)
+  //   return build('collection: collectionEntityById', toQuery, {
+  //     id: { type: 'String', required: true, value: id, name: 'id' },
+  //   })
+  // }
+
+  eventAllSaleInitialized(): GraphQuery {
+    return build('event: saleInitializeds', defaultField, {})
   }
 
   fetch<D>(query: GraphQuery): Promise<GraphLike<D>> {

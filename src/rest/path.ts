@@ -36,7 +36,7 @@ export function pathToRequest(
   options?: QueryProps<any>,
 ): GraphRequest {
   const { pathname } = urlOf(path) // query: options
-  const [chain, call, id] = parsePath(pathname)
+  const [call, id] = parsePath(pathname)
   if (!hasCall(call)) {
     throw new ReferenceError(`[UNIQUERY::REST] Invalid path: ${path}`)
   }

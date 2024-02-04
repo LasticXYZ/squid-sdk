@@ -1,5 +1,4 @@
 import {
-  AbstractBase,
   BaseEvent,
   Fields,
   ObjProp,
@@ -8,30 +7,23 @@ import {
   QueryProps,
 } from '../types'
 
-export const defaultField: ObjProp<AbstractBase> = [
-  'id',
-  'createdAt',
-  'name',
-  'metadata',
-  'currentOwner',
-  'issuer',
-]
-export const defaultEventField: ObjProp<BaseEvent> = [
+export const defaultField: ObjProp<BaseEvent> = [
   'id',
   'blockNumber',
   'timestamp',
 ]
+
 export const DEFAULT_LIMIT = 200
 // todo: add default orderBy
 export const defaultQueryOptions: QueryOptions = {
   limit: DEFAULT_LIMIT,
 }
 
-function hasMetaField(field: any): boolean {
-  return typeof field === 'string' && field === 'meta'
-}
+// function hasMetaField(field: any): boolean {
+//   return typeof field === 'string' && field === 'meta'
+// }
 
-export function extendFields<T extends AbstractBase>(
+export function extendFields<T extends BaseEvent>(
   fields: ObjProp<T>,
 ): ObjProp<T> {
   const set = new Set([...defaultField, ...fields])
@@ -41,23 +33,8 @@ export function extendFields<T extends AbstractBase>(
 export function getFields<T>(
   fields?: ObjProp<T>,
   defaultList: ObjProp<T> | string[] = defaultField,
-  replaceMetaField = true,
 ): Fields<T> {
   const list = fields ?? defaultList
-
-  if (replaceMetaField) {
-    const metaIndex = list.findIndex(hasMetaField)
-
-    if (metaIndex !== -1) {
-      list.splice(
-        metaIndex,
-        1,
-        {
-          meta: ['id', 'name', 'description', 'image', 'animationUrl', 'type'],
-        } as any,
-      )
-    }
-  }
   return list
 }
 
