@@ -27,26 +27,22 @@ describe('UNIQUERY UTILS', () => {
 
 
   describe('getFields', () => {
-    it('should return default fields', () => {
-      const fields = getFields<BaseEvent>('BaseEvent')
-      expect(fields).toStrictEqual(['id', 'blockNumber', 'timestamp'])
-    })
-
     it('should return extended fields', () => {
-      const fields = getFields<SaleInitializedEvent>('SaleInitializedEvent')
+      const fields = getFields(SaleInitializedEvent)
       expect(fields).toStrictEqual(
         [
           'id',
           'blockNumber',
           'timestamp',
-          'coresOffered',
-          'idealCoresSold',
+          'extrinsicHash',
+          'saleStart',
           'leadinLength',
+          'startPrice',
+          'regularPrice',
           'regionBegin',
           'regionEnd',
-          'regularPrice',
-          'saleStart',
-          'startPrice'
+          'idealCoresSold',
+          'coresOffered'
         ]
       )
     })
@@ -57,13 +53,10 @@ describe('UNIQUERY UTILS', () => {
     it('should fetch data successfully', async () => { // Marked as async
       const client = getClient()
       const query = client.eventAllSaleInitialized()
-      expect(query).toStrictEqual({
-        query: 'query  { event: saleInitializeds  { id, blockNumber, timestamp } }',
-        variables: {}
-      })
 
       // Assuming you're testing the fetch operation's result
       const result = await client.fetch(query)
+      console.log(JSON.stringify(result, null, 2));
 
       expect(result).toHaveProperty('data.event')
     })

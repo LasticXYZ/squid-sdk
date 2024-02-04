@@ -9,6 +9,7 @@ import {
   KeyOf,
   ObjProp,
   QueryProps,
+  SaleInitializedEvent,
 } from '../types'
 
 import {
@@ -31,7 +32,9 @@ class SquidClient {
   // }
 
   eventAllSaleInitialized(): GraphQuery {
-    return build('event: saleInitializeds', defaultField, {})
+    const fields = getFields(SaleInitializedEvent)
+
+    return build('event: saleInitializeds', fields, {})
   }
 
   fetch<D>(query: GraphQuery): Promise<GraphLike<D>> {

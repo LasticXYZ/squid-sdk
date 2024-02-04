@@ -30,38 +30,16 @@ export function extendFields<T extends BaseEvent>(
   return [...set]
 }
 
-// export function getFields<T>(
-//   fields?: ObjProp<T>,
-//   defaultList: ObjProp<T> | string[] = defaultField,
-// ): Fields<T> {
-//   const list = fields ?? defaultList
-//   return list
-// }
-
-// Define a mapping from type names to field lists
-const typeToFieldsMap: Record<string, string[]> = {
-  BaseEvent: ['id', 'blockNumber', 'timestamp'],
-  SaleInitializedEvent: [
-    'id', 'blockNumber', 'timestamp', 'coresOffered', 'idealCoresSold', 'leadinLength',
-    'regionBegin', 'regionEnd', 'regularPrice', 'saleStart', 'startPrice',
-  ],
-  SalesStartedEvent: [
-    'id', 'blockNumber', 'timestamp', 'price', 'coreCount',
-  ],
-};
-
-export function getFields<T>(
-  typeName: string, 
-  defaultList: ObjProp<T> | string[] = defaultField,
-): Fields<T>
-{
-  // Return the fields for the given type name, or the default list if the type name is not found
-  return typeToFieldsMap[typeName] ?? defaultList;
-}
 
 export function wrapSubqueryList<T>(fields: Fields<T>): [{ nodes: Fields<T> }] {
   return [{ nodes: fields }]
 }
+
+
+export function getFields<T>(cls: new () => T): string[] {
+  return Object.keys(new cls());
+}
+
 
 export function optionToQuery(
   options: QueryOptions,

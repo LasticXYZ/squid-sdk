@@ -1,255 +1,255 @@
 
 import { CoreAssignment, ScheduleItem, RegionId, AccountId32 } from "./v9430"
 
-interface HistoryInitializedEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    when: number;
-    privatePoolSize: number;
-    systemPoolSize: number;
+class HistoryInitializedEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    when: number | null = null;
+    privatePoolSize: number | null = null;
+    systemPoolSize: number | null = null;
 }
 
-interface SaleInitializedEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    saleStart: number;
-    leadinLength: number;
-    startPrice: bigint;
-    regularPrice: bigint;
-    regionBegin: number;
-    regionEnd: number;
-    idealCoresSold: number;
-    coresOffered: number;
+class SaleInitializedEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    saleStart: number | null = null;
+    leadinLength: number | null = null;
+    startPrice: bigint | null = null;
+    regularPrice: bigint | null = null;
+    regionBegin: number | null = null;
+    regionEnd: number | null = null;
+    idealCoresSold: number | null = null;
+    coresOffered: number | null = null;
 }
 
-interface SalesStartedEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    extrinsicHash?: string;
-    price: bigint;
-    coreCount: number;
+class SalesStartedEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    extrinsicHash?: string | null = null;
+    price: bigint | null = null;
+    coreCount: number | null = null;
 }
 
-interface PurchasedEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    who: string;
-    regionId: RegionId;
-    price: bigint;
-    duration: number;
+class PurchasedEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    who: string | null = null;
+    regionId: RegionId | null = null;
+    price: bigint | null = null;
+    duration: number | null = null;
 }
 
-interface RenewableEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    core: number;
-    price: bigint;
-    begin: number;
-    workload: ScheduleItem[];
+class RenewableEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    core: number | null = null;
+    price: bigint | null = null;
+    begin: number | null = null;
+    workload: ScheduleItem[] | null = null;
 }
 
-interface RenewedEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    who: string;
-    price: bigint;
-    oldCore: number;
-    core: number;
-    begin: number;
-    duration: number;
-    workload: ScheduleItem[];
+class RenewedEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    who: string | null = null;
+    price: bigint | null = null;
+    oldCore: number | null = null;
+    core: number | null = null;
+    begin: number | null = null;
+    duration: number | null = null;
+    workload: ScheduleItem[] | null = null;
 }
 
-interface TransferredEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    regionId: RegionId;
-    duration: number;
-    oldOwner: string;
-    owner: string;
+class TransferredEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    regionId: RegionId | null = null;
+    duration: number | null = null;
+    oldOwner: string | null = null;
+    owner: string | null = null;
 }
 
-interface PartitionedEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    oldRegionId: RegionId;
-    newRegionIds: [RegionId, RegionId];
+class PartitionedEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    oldRegionId: RegionId | null = null;
+    newRegionIds: [RegionId, RegionId] | null = null;
 }
 
-interface InterlacedEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    oldRegionId: RegionId;
-    newRegionIds: [RegionId, RegionId];
+class InterlacedEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    oldRegionId: RegionId | null = null;
+    newRegionIds: [RegionId, RegionId] | null = null;
 }
 
-interface AssignedEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    regionId: RegionId;
-    duration: number;
-    task: number;
+class AssignedEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    regionId: RegionId | null = null;
+    duration: number | null = null;
+    task: number | null = null;
 }
 
-interface PooledEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    regionId: RegionId;
-    duration: number;
+class PooledEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    regionId: RegionId | null = null;
+    duration: number | null = null;
 }
 
-interface CoreCountRequestedEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    coreCount: number;
+class CoreCountRequestedEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    coreCount: number | null = null;
 }
 
-interface CoreCountChangedEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    coreCount: number;
+class CoreCountChangedEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    coreCount: number | null = null;
 }
 
-interface ReservationMadeEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    index: number;
-    workload: ScheduleItem[];
+class ReservationMadeEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    index: number | null = null;
+    workload: ScheduleItem[] | null = null;
 }
 
-interface ReservationCancelledEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    index: number;
-    workload: ScheduleItem[];
+class ReservationCancelledEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    index: number | null = null;
+    workload: ScheduleItem[] | null = null;
 }
 
-interface LeasedEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    task: number;
-    until: number;
+class LeasedEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    task: number | null = null;
+    until: number | null = null;
 }
 
-interface LeaseEndingEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    task: number;
-    when: number;
+class LeaseEndingEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    task: number | null = null;
+    when: number | null = null;
 }
 
-interface RevenueClaimBegunEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    region: RegionId;
-    maxTimeslices: number;
+class RevenueClaimBegunEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    region: RegionId | null = null;
+    maxTimeslices: number | null = null;
 }
 
-interface RevenueClaimItemEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    when: number;
-    amount: bigint;
+class RevenueClaimItemEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    when: number | null = null;
+    amount: bigint | null = null;
 }
 
-interface RevenueClaimPaidEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    who: string;
-    amount: bigint;
-    next: RegionId | null;
+class RevenueClaimPaidEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    who: string | null = null;
+    amount: bigint | null = null;
+    next: RegionId | null | null = null;
 }
 
-interface CreditPurchasedEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    who: string;
-    beneficiary: string;
-    amount: bigint;
+class CreditPurchasedEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    who: string | null = null;
+    beneficiary: string | null = null;
+    amount: bigint | null = null;
 }
 
-interface RegionDroppedEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    regionId: RegionId;
-    duration: number;
+class RegionDroppedEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    regionId: RegionId | null = null;
+    duration: number | null = null;
 }
 
-interface ContributionDroppedEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    regionId: RegionId;
+class ContributionDroppedEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    regionId: RegionId | null = null;
 }
 
-interface HistoryDroppedEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    when: number;
-    revenue: bigint;
+class HistoryDroppedEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    when: number | null = null;
+    revenue: bigint | null = null;
 }
 
-interface HistoryIgnoredEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    when: number;
-    revenue: bigint;
+class HistoryIgnoredEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    when: number | null = null;
+    revenue: bigint | null = null;
 }
 
-interface ClaimsReadyEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    when: number;
-    systemPayout: bigint;
-    privatePayout: bigint;
+class ClaimsReadyEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    when: number | null = null;
+    systemPayout: bigint | null = null;
+    privatePayout: bigint | null = null;
 }
 
-interface CoreAssignedEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    core: number;
-    when: number;
-    assignment: [CoreAssignment, number][];
+class CoreAssignedEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    core: number | null = null;
+    when: number | null = null;
+    assignment: [CoreAssignment, number][] | null = null;
 }
 
-interface AllowedRenewalDroppedEvent {
-    id: string;
-    blockNumber: number;
-    timestamp: Date;
-    when: number;
-    core: number;
+class AllowedRenewalDroppedEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    when: number | null = null;
+    core: number | null = null;
 }
 
 
-// Export all interfaces
+// Export all classs
 export {
     HistoryInitializedEvent,
     SaleInitializedEvent,
