@@ -1,3 +1,5 @@
+import { RegionId, ScheduleItem, NewRegionIds, CoreAssignment_Wrap } from './helper';
+
 class HistoryInitializedEvent {
     id: string | null = null;
     blockNumber: number | null = null;
@@ -32,20 +34,6 @@ class SalesStartedEvent {
     coreCount: number | null = null;
 }
 
-class RegionId {
-    begin: number | null
-    core: number | null
-    mask: string | null
-
-    constructor() {
-        // Ensure properties are initialized in a way that allows type checking
-        // For example, initializing with default values
-        this.begin = 0;
-        this.core = 0;
-        this.mask = '';
-    }
-}
-
 class PurchasedEvent {
     id: string | null = null;
     blockNumber: number | null = null;
@@ -54,26 +42,6 @@ class PurchasedEvent {
     regionId: RegionId = new RegionId();
     price: bigint | null = null;
     duration: number | null = null;
-}
-
-class Assignment {
-    kind: string | null
-    value: number | null
-
-    constructor() {
-        this.kind = '';
-        this.value = 0;
-    }
-}
-
-class ScheduleItem {
-    mask: string | null;
-    assignment: Assignment;
-
-    constructor() {
-        this.mask = '';
-        this.assignment = new Assignment();
-    }
 }
 
 class RenewableEvent {
@@ -115,11 +83,6 @@ class TransferredEvent {
     duration: number | null = null;
     oldOwner: string | null = null;
     owner: string | null = null;
-}
-
-class NewRegionIds {
-    first: RegionId = new RegionId();
-    second: RegionId = new RegionId();
 }
 
 class PartitionedEvent {
@@ -280,16 +243,6 @@ class ClaimsReadyEvent {
     when: number | null = null;
     systemPayout: bigint | null = null;
     privatePayout: bigint | null = null;
-}
-
-class CoreAssignment {
-    kind: string | null = null;
-    value: number | null = null;
-}
-
-class CoreAssignment_Wrap {
-    assignment: CoreAssignment = new CoreAssignment();
-    value: number | null = null;
 }
 
 class CoreAssignedEvent {

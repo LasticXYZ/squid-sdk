@@ -1,11 +1,11 @@
-import { ConfigRecord, ScheduleItem, RegionId, CoreMask, Finality } from "./v9430"
+import { RegionId, ScheduleItem, ConfigRecord } from "./helper";
 
 class ConfigureCall {
     id: string | null = null;
     blockNumber: number | null = null;
     timestamp: Date | null = null;
     extrinsicHash?: string | null = null;
-    config: ConfigRecord | null = null;
+    config: ConfigRecord = new ConfigRecord();
 }
 
 class ReserveCall {
@@ -13,7 +13,11 @@ class ReserveCall {
     blockNumber: number | null = null;
     timestamp: Date | null = null;
     extrinsicHash?: string | null = null;
-    workload: ScheduleItem[] | null = null;
+    workload: ScheduleItem[] = [];
+    
+    constructor() {
+        this.workload.push(new ScheduleItem());
+    }
 }
 
 class UnreserveCall {
@@ -63,7 +67,7 @@ class TransferCall {
     blockNumber: number | null = null;
     timestamp: Date | null = null;
     extrinsicHash?: string | null = null;
-    regionId: RegionId | null = null;
+    regionId: RegionId = new RegionId();
     newOwner: string | null = null;
 }
 
@@ -72,7 +76,7 @@ class PartitionCall {
     blockNumber: number | null = null;
     timestamp: Date | null = null;
     extrinsicHash?: string | null = null;
-    regionId: RegionId | null = null;
+    regionId: RegionId = new RegionId();
     pivot: number | null = null;
 }
 
@@ -81,8 +85,8 @@ class InterlaceCall {
     blockNumber: number | null = null;
     timestamp: Date | null = null;
     extrinsicHash?: string | null = null;
-    regionId: RegionId | null = null;
-    pivot: CoreMask | null = null;
+    regionId: RegionId = new RegionId();
+    pivot: string | null = null;
 }
 
 class AssignCall {
@@ -90,9 +94,9 @@ class AssignCall {
     blockNumber: number | null = null;
     timestamp: Date | null = null;
     extrinsicHash?: string | null = null;
-    regionId: RegionId | null = null;
+    regionId: RegionId = new RegionId();
     task: number | null = null;
-    finality: Finality | null = null;
+    finality: string | null = null;
 }
 
 class PoolCall {
@@ -100,9 +104,9 @@ class PoolCall {
     blockNumber: number | null = null;
     timestamp: Date | null = null;
     extrinsicHash?: string | null = null;
-    regionId: RegionId | null = null;
+    regionId: RegionId = new RegionId();
     payee: string | null = null;
-    finality: Finality | null = null;
+    finality: string | null = null;
 }
 
 class ClaimRevenueCall {
@@ -110,7 +114,7 @@ class ClaimRevenueCall {
     blockNumber: number | null = null;
     timestamp: Date | null = null;
     extrinsicHash?: string | null = null;
-    regionId: RegionId | null = null;
+    regionId: RegionId = new RegionId();
     maxTimeslices: number | null = null;
 }
 
@@ -128,7 +132,7 @@ class DropRegionCall {
     blockNumber: number | null = null;
     timestamp: Date | null = null;
     extrinsicHash?: string | null = null;
-    regionId: RegionId | null = null;
+    regionId: RegionId = new RegionId();
 }
 
 class DropContributionCall {
@@ -136,7 +140,7 @@ class DropContributionCall {
     blockNumber: number | null = null;
     timestamp: Date | null = null;
     extrinsicHash?: string | null = null;
-    regionId: RegionId | null = null;
+    regionId: RegionId = new RegionId();
 }
 
 class DropHistoryCall {

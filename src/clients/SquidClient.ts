@@ -220,7 +220,7 @@ class SquidClient {
 
   callAllConfigure(): GraphQuery {
     const recFields = getRecursiveFields(ConfigureCall)
-    return advancedBuild('event: configureExts', recFields, {})
+    return advancedBuild('call: configureExts', recFields, {})
   }
 
   callAllReserve(): GraphQuery {

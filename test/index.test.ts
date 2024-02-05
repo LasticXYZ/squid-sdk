@@ -108,8 +108,8 @@ describe('UNIQUERY UTILS', () => {
   describe('SquidClient Event Queries', () => {
     const client = getClient();
 
-    const queryFunctions = [
-      //{ func: client.eventAllHistoryInitialized, type: 'HistoryInitializedEvent'},
+    const queryEventFunctions = [
+      // { func: client.eventAllHistoryInitialized, type: 'HistoryInitializedEvent'},
       // { func: client.eventAllSaleInitialized, type: 'SaleInitializedEvent' },
       // { func: client.eventAllSalesStarted, type: 'SalesStartedEvent' },
       // { func: client.eventAllPurchased, type: 'PurchasedEvent' },
@@ -135,24 +135,56 @@ describe('UNIQUERY UTILS', () => {
       // { func: client.eventAllReservationMade, type: 'eventAllReservationMade' },
       // { func: client.eventAllCoreCountChanged, type: 'eventAllCoreCountChanged' },
       // { func: client.eventAllCoreCountRequested, type: 'eventAllCoreCountRequested' },
-      // { func: client.eventAllRevenueClaimPaid, type: 'eventAllRevenueClaimPaid' },
-      { func: client.callAllConfigure, type: 'callAllConfigure' },
+      { func: client.eventAllRevenueClaimPaid, type: 'eventAllRevenueClaimPaid' },
 
     ];
   
 
-    queryFunctions.forEach(({ func, type }) => {
+    queryEventFunctions.forEach(({ func, type }) => {
+      it(`should fetch data successfully for ${type}`, async () => {
+        const query = func.call(client); // Call the function on the client instance
+        const result = await client.fetch(query); // Fetch the data
+                
+        expect(result).toHaveProperty('data.event'); // General assertion; adjust as needed
+      });
+    });
+  });
+
+  describe('SquidClient Call Queries', () => {
+    const client = getClient();
+
+    const queryCallFunctions = [
+      // { func: client.callAllConfigure, type: 'callAllConfigure' },
+      // { func: client.callAllReserve, type: 'callAllReserve' },
+      // { func: client.callAllUnreserve, type: 'callAllUnreserve' },
+      // { func: client.callAllSetLease, type: 'callAllSetLease' },
+      // { func: client.callAllStartSales, type: 'callAllStartSales' },
+      // { func: client.callAllPurchase, type: 'callAllPurchase' },
+      // { func: client.callAllRenew, type: 'callAllRenew' },
+      // { func: client.callAllTransfer, type: 'callAllTransfer' },
+      // { func: client.callAllPartition, type: 'callAllPartition' },
+      // { func: client.callAllInterlace, type: 'callAllInterlace' },
+      // { func: client.callAllAssign, type: 'callAllAssign' },
+      // { func: client.callAllPool, type: 'callAllPool' },
+      // { func: client.callAllClaimRevenue, type: 'callAllClaimRevenue' },
+      // { func: client.callAllPurchaseCredit, type: 'callAllPurchaseCredit' },
+      // { func: client.callAllDropRegion, type: 'callAllDropRegion' },
+      // { func: client.callAllDropContribution, type: 'callAllDropContribution' },
+      // { func: client.callAllDropHistory, type: 'callAllDropHistory' },
+      // { func: client.callAllDropRenewal, type: 'callAllDropRenewal' },
+      { func: client.callAllRequestCoreCount, type: 'callAllRequestCoreCount' },
+    ];
+
+    queryCallFunctions.forEach(({ func, type }) => {
       it(`should fetch data successfully for ${type}`, async () => {
         const query = func.call(client); // Call the function on the client instance
         const result = await client.fetch(query); // Fetch the data
         
-        console.log(result.data.event); // Optional: Log for debugging
+        console.log(result.data.call); // Optional: Log for debugging
         
-        expect(result).toHaveProperty('data.event'); // General assertion; adjust as needed
+        expect(result).toHaveProperty('data.call'); // General assertion; adjust as needed
       });
     });
-
-    
   });
   
 })
