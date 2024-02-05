@@ -8,8 +8,11 @@ import {
     SaleInitializedEvent,
     PurchasedEvent,
     SalesStartedEvent,
-    RenewableEvent
+    RenewableEvent,
+    PartitionedEvent,
+    CoreAssignedEvent
 } from '../src/types'
+import { formatFields } from '../src/queryBuilder'
 
 
 describe('UNIQUERY UTILS', () => {
@@ -51,32 +54,11 @@ describe('UNIQUERY UTILS', () => {
       )
     })
 
-    it('should return recursive fields', () => {
-      const fields = getRecursiveFields(PurchasedEvent)
-      expect(fields).toStrictEqual(
-        {
-          "id": "id",
-          "blockNumber": "blockNumber",
-          "timestamp": "timestamp",
-          "duration": "duration",
-          "price": "price",
-          "regionId": {
-            "begin": "begin",
-              "core": "core",
-              "mask": "mask",
-            },
-          "who": "who",
-        }
-      )
-    })
-
     it('should return recursive fields 2', () => {
-      const fields = getRecursiveFields(RenewableEvent)
-      expect(fields).toStrictEqual(
-        {
-          "id": "id",
-          "blockNumber": "blockNumber",
-        }
+      const fields = getRecursiveFields(CoreAssignedEvent)
+      const queryStr = formatFields(fields)
+      expect(queryStr).toStrictEqual(
+          "id blockNumber timestamp core when assignment { assignment { kind value } value }"
       )
     })
 
@@ -127,13 +109,35 @@ describe('UNIQUERY UTILS', () => {
     const client = getClient();
 
     const queryFunctions = [
-      { func: client.eventAllSaleInitialized, type: 'SaleInitializedEvent' },
-      { func: client.eventAllSalesStarted, type: 'SalesStartedEvent' },
-      { func: client.eventAllPurchased, type: 'PurchasedEvent' },
-      //{ func: client.eventAllRenewable, type: 'RenewableEvent' },
-      { func: client.eventAllRenewed, type: 'RenewedEvent' },
-      { func: client.eventAllTransferred, type: 'TransferredEvent' },
-      //{ func: client.eventAllPartitioned, type: 'PartitionedEvent' },
+      //{ func: client.eventAllHistoryInitialized, type: 'HistoryInitializedEvent'},
+      // { func: client.eventAllSaleInitialized, type: 'SaleInitializedEvent' },
+      // { func: client.eventAllSalesStarted, type: 'SalesStartedEvent' },
+      // { func: client.eventAllPurchased, type: 'PurchasedEvent' },
+      // { func: client.eventAllRenewable, type: 'RenewableEvent' },
+      // { func: client.eventAllRenewed, type: 'RenewedEvent' },
+      // { func: client.eventAllTransferred, type: 'TransferredEvent' },
+      // { func: client.eventAllPartitioned, type: 'PartitionedEvent' },
+      // { func: client.eventAllInterlaced, type: 'InterlacedEvent' },
+      // { func: client.eventAllAssigned, type: 'AssignedEvent' },
+      // { func: client.eventAllPooled, type: 'PooledEvent' },
+      // { func: client.eventAllClaimsReady, type: 'eventAllClaimsReady' },
+      // { func: client.eventAllAllowedRenewalDropped, type: 'eventAllAllowedRenewalDropped' },
+      // { func: client.eventAllCoreAssigned, type: 'eventAllCoreAssigned' },
+      // { func: client.eventAllHistoryDropped, type: 'eventAllHistoryDropped' },
+      // { func: client.eventAllContributionDropped, type: 'eventAllContributionDropped'},
+      // { func: client.eventAllRegionDropped, type: 'eventAllRegionDropped' },
+      // { func: client.eventAllCreditPurchased, type: 'eventAllCreditPurchased' },
+      // { func: client.eventAllRevenueClaimItem, type: 'eventAllRevenueClaimItem' },
+      // { func: client.eventAllRevenueClaimBegun, type: 'eventAllRevenueClaimBegun' },
+      // { func: client.eventAllLeaseEnding, type: 'eventAllLeaseEnding' },
+      // { func: client.eventAllLeased, type: 'eventAllLeased' },
+      // { func: client.eventAllReservationCancelled, type: 'eventAllReservationCancelled' },
+      // { func: client.eventAllReservationMade, type: 'eventAllReservationMade' },
+      // { func: client.eventAllCoreCountChanged, type: 'eventAllCoreCountChanged' },
+      // { func: client.eventAllCoreCountRequested, type: 'eventAllCoreCountRequested' },
+      // { func: client.eventAllRevenueClaimPaid, type: 'eventAllRevenueClaimPaid' },
+      { func: client.callAllConfigure, type: 'callAllConfigure' },
+
     ];
   
 
@@ -142,7 +146,7 @@ describe('UNIQUERY UTILS', () => {
         const query = func.call(client); // Call the function on the client instance
         const result = await client.fetch(query); // Fetch the data
         
-        //console.log(result.data.event); // Optional: Log for debugging
+        console.log(result.data.event); // Optional: Log for debugging
         
         expect(result).toHaveProperty('data.event'); // General assertion; adjust as needed
       });

@@ -205,7 +205,7 @@ class SquidClient {
 
   eventAllClaimsReady(): GraphQuery {
     const recFields = getRecursiveFields(ClaimsReadyEvent)
-    return advancedBuild('event: claimsReadys', recFields, {})
+    return advancedBuild('event: claimsReadies', recFields, {})
   }
 
   eventAllCoreAssigned(): GraphQuery {
@@ -220,97 +220,97 @@ class SquidClient {
 
   callAllConfigure(): GraphQuery {
     const recFields = getRecursiveFields(ConfigureCall)
-    return advancedBuild('call: configures', recFields, {})
+    return advancedBuild('event: configureExts', recFields, {})
   }
 
   callAllReserve(): GraphQuery {
     const recFields = getRecursiveFields(ReserveCall)
-    return advancedBuild('call: reserves', recFields, {})
+    return advancedBuild('call: reserveExts', recFields, {})
   }
 
   callAllUnreserve(): GraphQuery {
     const recFields = getRecursiveFields(UnreserveCall)
-    return advancedBuild('call: unreserves', recFields, {})
+    return advancedBuild('call: unreserveExts', recFields, {})
   }
 
   callAllSetLease(): GraphQuery {
     const recFields = getRecursiveFields(SetLeaseCall)
-    return advancedBuild('call: setLeases', recFields, {})
+    return advancedBuild('call: setLeaseExts', recFields, {})
   }
 
   callAllStartSales(): GraphQuery {
     const recFields = getRecursiveFields(StartSalesCall)
-    return advancedBuild('call: startSaless', recFields, {})
+    return advancedBuild('call: startSalesExts', recFields, {})
   }
 
   callAllPurchase(): GraphQuery {
     const recFields = getRecursiveFields(PurchaseCall)
-    return advancedBuild('call: purchases', recFields, {})
+    return advancedBuild('call: purchaseExts', recFields, {})
   }
 
   callAllRenew(): GraphQuery {
     const recFields = getRecursiveFields(RenewCall)
-    return advancedBuild('call: renews', recFields, {})
+    return advancedBuild('call: renewExts', recFields, {})
   }
 
   callAllTransfer(): GraphQuery {
     const recFields = getRecursiveFields(TransferCall)
-    return advancedBuild('call: transfers', recFields, {})
+    return advancedBuild('call: transferExts', recFields, {})
   }
 
   callAllPartition(): GraphQuery {
     const recFields = getRecursiveFields(PartitionCall)
-    return advancedBuild('call: partitions', recFields, {})
+    return advancedBuild('call: partitionExts', recFields, {})
   }
 
   callAllInterlace(): GraphQuery {
     const recFields = getRecursiveFields(InterlaceCall)
-    return advancedBuild('call: interlaces', recFields, {})
+    return advancedBuild('call: interlaceExts', recFields, {})
   }
 
   callAllAssign(): GraphQuery {
     const recFields = getRecursiveFields(AssignCall)
-    return advancedBuild('call: assigns', recFields, {})
+    return advancedBuild('call: assignExts', recFields, {})
   }
 
   callAllPool(): GraphQuery {
     const recFields = getRecursiveFields(PoolCall)
-    return advancedBuild('call: pools', recFields, {})
+    return advancedBuild('call: poolExts', recFields, {})
   }
 
   callAllClaimRevenue(): GraphQuery {
     const recFields = getRecursiveFields(ClaimRevenueCall)
-    return advancedBuild('call: claimRevenues', recFields, {})
+    return advancedBuild('call: claimRevenueExts', recFields, {})
   }
 
   callAllPurchaseCredit(): GraphQuery {
     const recFields = getRecursiveFields(PurchaseCreditCall)
-    return advancedBuild('call: purchaseCredits', recFields, {})
+    return advancedBuild('call: purchaseCreditExts', recFields, {})
   }
 
   callAllDropRegion(): GraphQuery {
     const recFields = getRecursiveFields(DropRegionCall)
-    return advancedBuild('call: dropRegions', recFields, {})
+    return advancedBuild('call: dropRegionExts', recFields, {})
   }
 
   callAllDropContribution(): GraphQuery {
     const recFields = getRecursiveFields(DropContributionCall)
-    return advancedBuild('call: dropContributions', recFields, {})
+    return advancedBuild('call: dropContributionExts', recFields, {})
   }
 
   callAllDropHistory(): GraphQuery {
     const recFields = getRecursiveFields(DropHistoryCall)
-    return advancedBuild('call: dropHistorys', recFields, {})
+    return advancedBuild('call: dropHistoryExts', recFields, {})
   }
 
   callAllDropRenewal(): GraphQuery {
     const recFields = getRecursiveFields(DropRenewalCall)
-    return advancedBuild('call: dropRenewals', recFields, {})
+    return advancedBuild('call: dropRenewalExts', recFields, {})
   }
 
   callAllRequestCoreCount(): GraphQuery {
     const recFields = getRecursiveFields(RequestCoreCountCall)
-    return advancedBuild('call: requestCoreCounts', recFields, {})
+    return advancedBuild('call: requestCoreCountExts', recFields, {})
   }
 
   fetch<D>(query: GraphQuery): Promise<GraphLike<D>> {

@@ -1,6 +1,6 @@
 # GraphQl query builder
 
-This repository is inspired by [kodadot/uniquery](https://github.com/kodadot/uniquery) repository. Shoutout to [@vikiival](https://github.com/vikiival).
+This repository is inspired by [kodadot/uniquery](https://github.com/kodadot/uniquery) repository. Shoutout to [@vikiival](https://github.com/vikiival) for creating the original code.
 
 ## How to use
 

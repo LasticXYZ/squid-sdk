@@ -14,26 +14,26 @@ function build(
   })
 }
 
+const formatFields = (fields: FieldListDif): string => {
+  if (typeof fields === 'string') {
+    return fields;
+  } else {
+    return Object.entries(fields).map(([key, value]) => {
+      if (typeof value === 'string') {
+        return value;
+      } else {
+        // Recursively format nested fields
+        return `${key} { ${formatFields(value)} }`;
+      }
+    }).join(' ');
+  }
+};
+
 function advancedBuild(
   operation: string,
   fields: FieldListDif,
   variables?: KeyValue,
 ): GraphQuery {
-  const formatFields = (fields: FieldListDif): string => {
-    if (typeof fields === 'string') {
-      return fields;
-    } else {
-      return Object.entries(fields).map(([key, value]) => {
-        if (typeof value === 'string') {
-          return value;
-        } else {
-          // Recursively format nested fields
-          return `${key} { ${formatFields(value)} }`;
-        }
-      }).join(' ');
-    }
-  };
-  
   const fieldsStr = formatFields(fields);
   const queryStr = `query { ${operation} { ${fieldsStr} } }`;
   
@@ -44,4 +44,4 @@ function advancedBuild(
 }
 
 
-export {build, advancedBuild}
+export {formatFields, build, advancedBuild}

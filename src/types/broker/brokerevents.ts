@@ -56,13 +56,23 @@ class PurchasedEvent {
     duration: number | null = null;
 }
 
+class Assignment {
+    kind: string | null
+    value: number | null
+
+    constructor() {
+        this.kind = '';
+        this.value = 0;
+    }
+}
+
 class ScheduleItem {
-    mask: string | null
-    assignment: number | null
+    mask: string | null;
+    assignment: Assignment;
 
     constructor() {
         this.mask = '';
-        this.assignment = 0;
+        this.assignment = new Assignment();
     }
 }
 
@@ -90,7 +100,11 @@ class RenewedEvent {
     core: number | null = null;
     begin: number | null = null;
     duration: number | null = null;
-    workload: ScheduleItem[] = new Array<ScheduleItem>();
+    workload: ScheduleItem[] = [];
+
+    constructor() {
+        this.workload.push(new ScheduleItem());
+    }
 }
 
 class TransferredEvent {
@@ -103,12 +117,17 @@ class TransferredEvent {
     owner: string | null = null;
 }
 
+class NewRegionIds {
+    first: RegionId = new RegionId();
+    second: RegionId = new RegionId();
+}
+
 class PartitionedEvent {
     id: string | null = null;
     blockNumber: number | null = null;
     timestamp: Date | null = null;
     oldRegionId: RegionId = new RegionId();
-    newRegionIds: [RegionId, RegionId] = [new RegionId(), new RegionId()];
+    newRegionIds: NewRegionIds = new NewRegionIds();
 }
 
 class InterlacedEvent {
@@ -116,7 +135,7 @@ class InterlacedEvent {
     blockNumber: number | null = null;
     timestamp: Date | null = null;
     oldRegionId: RegionId = new RegionId();
-    newRegionIds: [RegionId, RegionId] = [new RegionId(), new RegionId()];
+    newRegionIds: NewRegionIds = new NewRegionIds();
 }
 
 class AssignedEvent {
@@ -155,15 +174,22 @@ class ReservationMadeEvent {
     blockNumber: number | null = null;
     timestamp: Date | null = null;
     index: number | null = null;
-    workload: ScheduleItem[] = new Array<ScheduleItem>();
-}
+    workload: ScheduleItem[] = [];
+
+    constructor() {
+        this.workload.push(new ScheduleItem());
+    }}
 
 class ReservationCancelledEvent {
     id: string | null = null;
     blockNumber: number | null = null;
     timestamp: Date | null = null;
     index: number | null = null;
-    workload: ScheduleItem[] = new Array<ScheduleItem>();
+    workload: ScheduleItem[] = [];
+
+    constructor() {
+        this.workload.push(new ScheduleItem());
+    }
 }
 
 class LeasedEvent {
@@ -186,7 +212,7 @@ class RevenueClaimBegunEvent {
     id: string | null = null;
     blockNumber: number | null = null;
     timestamp: Date | null = null;
-    region: RegionId | null = null;
+    region: RegionId = new RegionId();
     maxTimeslices: number | null = null;
 }
 
@@ -194,7 +220,7 @@ class RevenueClaimItemEvent {
     id: string | null = null;
     blockNumber: number | null = null;
     timestamp: Date | null = null;
-    when: number | null = null;
+    who: string | null = null;
     amount: bigint | null = null;
 }
 
@@ -204,7 +230,7 @@ class RevenueClaimPaidEvent {
     timestamp: Date | null = null;
     who: string | null = null;
     amount: bigint | null = null;
-    next: RegionId | null | null = null;
+    next: number | null = null;
 }
 
 class CreditPurchasedEvent {
@@ -261,13 +287,22 @@ class CoreAssignment {
     value: number | null = null;
 }
 
+class CoreAssignment_Wrap {
+    assignment: CoreAssignment = new CoreAssignment();
+    value: number | null = null;
+}
+
 class CoreAssignedEvent {
     id: string | null = null;
     blockNumber: number | null = null;
     timestamp: Date | null = null;
     core: number | null = null;
     when: number | null = null;
-    assignment: [CoreAssignment, number][] | null = null;
+    assignment: CoreAssignment_Wrap[] = [];
+
+    constructor() {
+        this.assignment.push(new CoreAssignment_Wrap());
+    }
 }
 
 class AllowedRenewalDroppedEvent {
