@@ -23,7 +23,6 @@ export * from './rest'
 export { getClient, getUrl, SquidClient }
 
 export { 
-    GraphLike,
     HistoryInitializedEvent,
     SaleInitializedEvent,
     SalesStartedEvent,
