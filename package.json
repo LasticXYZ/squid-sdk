@@ -1,6 +1,6 @@
 {
   "name": "@poppyseed/squid-sdk",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "GraphQL query builder for Lastic",
   "license": "GPL-3.0",
   "repository": {
