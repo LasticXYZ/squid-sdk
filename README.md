@@ -5,7 +5,7 @@ This repository is part of the LasticXYZ project. Originally based on code from 
 ## How to use
 
 ```
-import { getClient, SaleInitializedEvent } from '@lasticxyz/squid-sdk'
+import { getClient, SaleInitializedEvent } from '@poppyseed/squid-sdk'
 
 const client = getClient()
 const query = client.eventAllSaleInitialized()

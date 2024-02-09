@@ -11,7 +11,7 @@ import {
     RenewableEvent,
     PartitionedEvent,
     CoreAssignedEvent
-} from '../src/types'
+} from '../src'
 import { formatFields } from '../src/queryBuilder'
 
 

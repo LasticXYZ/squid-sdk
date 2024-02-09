@@ -1,11 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "outDir": "./dist",
+    "declaration": true,
+    "declarationMap": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
-    "esModuleInterop": true
+    "target": "ESNext",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@poppyseed/squid-sdk/*": ["./src/*"]
+    }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "test"]
 }
