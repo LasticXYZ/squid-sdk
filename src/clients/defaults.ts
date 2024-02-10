@@ -100,7 +100,46 @@ export function getRecursiveFields<T>(Cls: new () => T): FieldList {
     return fields;
 }
 
+export type FieldArrItem = string | { [key: string]: FieldArr };
+export type FieldArr = Array<FieldArrItem>;
 
+export function getRecursiveFieldstoArr<T>(Cls: new () => T): FieldArr {
+    const instance = new Cls();
+
+    const fields = Object.keys(instance).reduce((acc, key) => {
+        const propertyValue = instance[key];
+
+        if (Array.isArray(propertyValue) && propertyValue.length > 0) {
+            const firstElement = propertyValue[0];
+            console.log(firstElement)
+            if (typeof firstElement === 'object' && firstElement !== null) {
+                const ElementClass = firstElement.constructor;
+                if (ElementClass !== Object) {
+                    // Create an object with the key and recursive call result
+                    const nestedFields = getRecursiveFieldstoArr(ElementClass as new () => unknown);
+                    const nestedObject = { [key]: nestedFields };
+                    acc.push(nestedObject);
+                }
+            }
+        } else if (propertyValue !== null && typeof propertyValue === 'object') {
+            const NestedClass = propertyValue.constructor;
+            if (NestedClass !== Object) {
+                const nestedFields = getRecursiveFieldstoArr(NestedClass as new () => unknown);
+                console.log(nestedFields)
+                const nestedObject = { [key]: nestedFields };
+                acc.push(nestedObject);
+            } else {
+                acc.push(key);
+            }
+        } else {
+            acc.push(key);
+        }
+
+        return acc;
+    }, [] as FieldArr);
+
+    return fields;
+}
 
 
 export function optionToQuery(

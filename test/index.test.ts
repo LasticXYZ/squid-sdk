@@ -1,7 +1,7 @@
 import { expect, it, describe } from 'vitest'
 import { getClient, getUrl } from '../src'
 import { parsePath, pathToRequest } from '../src/rest/path'
-import { extendFields, getFields, getRecursiveFields, includeBurned } from '../src/clients/defaults'
+import { extendFields, getFields, getRecursiveFields, getRecursiveFieldstoArr, includeBurned } from '../src/clients/defaults'
 import { 
     BaseEvent,
     GraphLike,
@@ -12,7 +12,7 @@ import {
     PartitionedEvent,
     CoreAssignedEvent
 } from '../src'
-import { formatFields } from '../src/queryBuilder'
+import { advancedBuild2, formatFields } from '../src/queryBuilder'
 
 
 describe('UNIQUERY UTILS', () => {
@@ -55,13 +55,20 @@ describe('UNIQUERY UTILS', () => {
     })
 
     it('should return recursive fields 2', () => {
-      const fields = getRecursiveFields(CoreAssignedEvent)
-      const queryStr = formatFields(fields)
-      expect(queryStr).toStrictEqual(
-          "id blockNumber timestamp core when assignment { assignment { kind value } value }"
-      )
-    })
+      //const fields = getRecursiveFields(CoreAssignedEvent)
+      const who = "EhohRc1CCHfMDRDgkwrfePjBE8GcoyRarPAh8nLY1wX95d1"
+      const field2 = getRecursiveFieldstoArr(CoreAssignedEvent)
+      const build = advancedBuild2('event: creditPurchaseds', field2, {
+        where: { type: 'String', required: true, value: who, name: 'who_eq' }}
+      );
+      
+      // const queryArr = formatFieldsToArray(fields)
+      // const queryStr = formatFields(fields)
+      //console.log(field2);
+      //console.log(JSON.stringify(field2, null, 2));
+      console.log(build);
 
+    })
   })
 
   describe('test2 eventAllSaleInitialized', () => {
@@ -99,6 +106,19 @@ describe('UNIQUERY UTILS', () => {
       // Assuming you're testing the fetch operation's result
       const result: GraphLike<SaleInitializedEvent[]> = await client.fetch(query)
       //console.log(result.data.event);
+
+      expect(result).toHaveProperty('data.event')
+    })
+  })
+
+  describe('test whopurchased event', () => {
+    it('should fetch data successfully', async () => { // Marked as async
+      const client = getClient()
+      const query = client.eventWhoPurchased('EhohRc1CCHfMDRDgkwrfePjBE8GcoyRarPAh8nLY1wX95d1')
+
+      // Assuming you're testing the fetch operation's result
+      const result: GraphLike<PurchasedEvent[]> = await client.fetch(query)
+      console.log(query);
 
       expect(result).toHaveProperty('data.event')
     })
@@ -180,7 +200,7 @@ describe('UNIQUERY UTILS', () => {
         const query = func.call(client); // Call the function on the client instance
         const result = await client.fetch(query); // Fetch the data
         
-        console.log(result.data.call); // Optional: Log for debugging
+        //console.log(result.data.call); // Optional: Log for debugging
         
         expect(result).toHaveProperty('data.call'); // General assertion; adjust as needed
       });

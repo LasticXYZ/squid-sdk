@@ -14,7 +14,7 @@
 import { $fetch } from 'ofetch'
 import { getUrl } from '../indexers'
 import { getOptions } from '../indexers/utils'
-import { build, advancedBuild } from '../queryBuilder'
+import { build, advancedBuild, advancedBuild2 } from '../queryBuilder'
 import {
   BaseEvent,
   GraphLike,
@@ -76,6 +76,7 @@ import {
   genericCountQuery,
   getFields,
   getRecursiveFields,
+  getRecursiveFieldstoArr,
   includeBurned,
   optionToQuery,
 } from './defaults'
@@ -109,6 +110,13 @@ class SquidClient {
   eventAllPurchased(): GraphQuery {
     const recFields = getRecursiveFields(PurchasedEvent)
     return advancedBuild('event: purchaseds', recFields, {})
+  }
+
+  eventWhoPurchased(who: string): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(PurchasedEvent)
+    return advancedBuild2('event: purchaseds', recFields, {
+      where: { type: 'String', required: true, value: who, name: 'who_eq' },
+    })
   }
 
   eventAllRenewable(): GraphQuery {
