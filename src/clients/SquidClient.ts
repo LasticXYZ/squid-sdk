@@ -115,7 +115,13 @@ class SquidClient {
   eventWhoPurchased(who: string): GraphQuery {
     const recFields = getRecursiveFieldstoArr(PurchasedEvent)
     return advancedBuild2('event: purchaseds', recFields, {
-      where: { type: 'String', required: true, value: who, name: 'who_eq' },
+      where: { 
+        value: {
+          'who_eq': who
+        }, 
+        type: 'PurchasedWhereInput',
+        required: true 
+      },
     })
   }
 

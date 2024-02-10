@@ -58,7 +58,7 @@ describe('UNIQUERY UTILS', () => {
       //const fields = getRecursiveFields(CoreAssignedEvent)
       const who = "EhohRc1CCHfMDRDgkwrfePjBE8GcoyRarPAh8nLY1wX95d1"
       const field2 = getRecursiveFieldstoArr(CoreAssignedEvent)
-      const build = advancedBuild2('event: creditPurchaseds', field2, {
+      const build = advancedBuild2('event: purchased', field2, {
         where: { type: 'String', required: true, value: who, name: 'who_eq' }}
       );
       
@@ -66,7 +66,7 @@ describe('UNIQUERY UTILS', () => {
       // const queryStr = formatFields(fields)
       //console.log(field2);
       //console.log(JSON.stringify(field2, null, 2));
-      console.log(build);
+      //console.log(build);
 
     })
   })
@@ -115,10 +115,10 @@ describe('UNIQUERY UTILS', () => {
     it('should fetch data successfully', async () => { // Marked as async
       const client = getClient()
       const query = client.eventWhoPurchased('EhohRc1CCHfMDRDgkwrfePjBE8GcoyRarPAh8nLY1wX95d1')
-
-      // Assuming you're testing the fetch operation's result
-      const result: GraphLike<PurchasedEvent[]> = await client.fetch(query)
       console.log(query);
+      // Assuming you're testing the fetch operation's result
+      const result = await client.fetch(query)
+      console.log(result.data.event);
 
       expect(result).toHaveProperty('data.event')
     })

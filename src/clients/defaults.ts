@@ -111,7 +111,7 @@ export function getRecursiveFieldstoArr<T>(Cls: new () => T): FieldArr {
 
         if (Array.isArray(propertyValue) && propertyValue.length > 0) {
             const firstElement = propertyValue[0];
-            console.log(firstElement)
+            //console.log(firstElement)
             if (typeof firstElement === 'object' && firstElement !== null) {
                 const ElementClass = firstElement.constructor;
                 if (ElementClass !== Object) {
@@ -125,7 +125,7 @@ export function getRecursiveFieldstoArr<T>(Cls: new () => T): FieldArr {
             const NestedClass = propertyValue.constructor;
             if (NestedClass !== Object) {
                 const nestedFields = getRecursiveFieldstoArr(NestedClass as new () => unknown);
-                console.log(nestedFields)
+                //console.log(nestedFields)
                 const nestedObject = { [key]: nestedFields };
                 acc.push(nestedObject);
             } else {
