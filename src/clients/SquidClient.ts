@@ -125,6 +125,19 @@ class SquidClient {
     })
   }
 
+  eventCorePurchased(coreNb: number): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(PurchasedEvent)
+    return advancedBuild2('event: purchaseds', recFields, {
+      where: { 
+        value: {
+          regionId: {core_eq: coreNb}
+        }, 
+        type: 'PurchasedWhereInput',
+        required: true 
+      },
+    })
+  }
+
   eventAllRenewable(): GraphQuery {
     const recFields = getRecursiveFields(RenewableEvent)
     return advancedBuild('event: renewables', recFields, {})
@@ -139,6 +152,33 @@ class SquidClient {
     const recFields = getRecursiveFields(TransferredEvent)
     return advancedBuild('event: transferreds', recFields, {})
   }
+
+  eventWhoTransferred(who: string): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(TransferredEvent)
+    return advancedBuild2('event: transferreds', recFields, {
+      where: { 
+        value: {
+          'who_eq': who
+        }, 
+        type: 'TransferredWhereInput',
+        required: true 
+      },
+    })
+  }
+
+  eventCoreTransferred(coreNb: number): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(TransferredEvent)
+    return advancedBuild2('event: transferreds', recFields, {
+      where: { 
+        value: {
+          regionId: {core_eq: coreNb}
+        }, 
+        type: 'TransferredWhereInput',
+        required: true 
+      },
+    })
+  }
+
 
   eventAllPartitioned(): GraphQuery {
     const recFields = getRecursiveFields(PartitionedEvent)

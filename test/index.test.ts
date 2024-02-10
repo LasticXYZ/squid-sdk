@@ -114,7 +114,7 @@ describe('UNIQUERY UTILS', () => {
   describe('test whopurchased event', () => {
     it('should fetch data successfully', async () => { // Marked as async
       const client = getClient()
-      const query = client.eventWhoPurchased('EhohRc1CCHfMDRDgkwrfePjBE8GcoyRarPAh8nLY1wX95d1')
+      const query = client.eventCoreTransferred(54)
       console.log(query);
       // Assuming you're testing the fetch operation's result
       const result = await client.fetch(query)
