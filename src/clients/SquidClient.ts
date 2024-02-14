@@ -107,12 +107,21 @@ class SquidClient {
     return advancedBuild('event: salesStarteds', recFields, {})
   }
 
-  eventAllPurchased(): GraphQuery {
-    const recFields = getRecursiveFields(PurchasedEvent)
-    return advancedBuild('event: purchaseds', recFields, {})
+  // eventAllPurchased(): GraphQuery {
+  //   const recFields = getRecursiveFields(PurchasedEvent)
+  //   return advancedBuild('event: purchaseds', recFields, {})
+  // }
+
+  eventAllPurchased(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(PurchasedEvent)
+    return advancedBuild2('event: purchaseds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[PurchasedOrderByInput!]'},
+    })
   }
 
-  eventWhoPurchased(who: string): GraphQuery {
+  eventWhoPurchased(who: string, limit: number = 10, offset: number = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(PurchasedEvent)
     return advancedBuild2('event: purchaseds', recFields, {
       where: { 
@@ -122,10 +131,13 @@ class SquidClient {
         type: 'PurchasedWhereInput',
         required: true 
       },
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[PurchasedOrderByInput!]'},
     })
   }
 
-  eventCorePurchased(coreNb: number): GraphQuery {
+  eventCorePurchased(coreNb: number, limit: number = 10, offset: number = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(PurchasedEvent)
     return advancedBuild2('event: purchaseds', recFields, {
       where: { 
@@ -135,6 +147,9 @@ class SquidClient {
         type: 'PurchasedWhereInput',
         required: true 
       },
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[PurchasedOrderByInput!]'},
     })
   }
 

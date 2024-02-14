@@ -114,7 +114,7 @@ describe('UNIQUERY UTILS', () => {
   describe('test whopurchased event', () => {
     it('should fetch data successfully', async () => { // Marked as async
       const client = getClient()
-      const query = client.eventCoreTransferred(54)
+      const query = client.eventCorePurchased(54)
       console.log(query);
       // Assuming you're testing the fetch operation's result
       const result = await client.fetch(query)
@@ -132,7 +132,7 @@ describe('UNIQUERY UTILS', () => {
       // { func: client.eventAllHistoryInitialized, type: 'HistoryInitializedEvent'},
       // { func: client.eventAllSaleInitialized, type: 'SaleInitializedEvent' },
       // { func: client.eventAllSalesStarted, type: 'SalesStartedEvent' },
-      // { func: client.eventAllPurchased, type: 'PurchasedEvent' },
+      { func: client.eventAllPurchased, type: 'PurchasedEvent' },
       // { func: client.eventAllRenewable, type: 'RenewableEvent' },
       // { func: client.eventAllRenewed, type: 'RenewedEvent' },
       // { func: client.eventAllTransferred, type: 'TransferredEvent' },
@@ -155,7 +155,7 @@ describe('UNIQUERY UTILS', () => {
       // { func: client.eventAllReservationMade, type: 'eventAllReservationMade' },
       // { func: client.eventAllCoreCountChanged, type: 'eventAllCoreCountChanged' },
       // { func: client.eventAllCoreCountRequested, type: 'eventAllCoreCountRequested' },
-      { func: client.eventAllRevenueClaimPaid, type: 'eventAllRevenueClaimPaid' },
+      // { func: client.eventAllRevenueClaimPaid, type: 'eventAllRevenueClaimPaid' },
 
     ];
   
