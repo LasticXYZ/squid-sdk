@@ -15,10 +15,14 @@ import { $fetch } from 'ofetch'
 import { GraphLike, GraphQuery } from '../types'
 import { getOptions } from './utils'
 
-const SquidEndpoint = 'https://squid.subsquid.io/rococo-coretime/v/v1/graphql'
+const RococoSquidEndpoint = 'https://lastic.squids.live/rococo-coretime/graphql'
+const KusamaSquidEndpoint = 'https://lastic.squids.live/kusama-coretime/v/v1/graphql'
 
-function getUrl(): string {
-  return SquidEndpoint
+function getUrl(rpc_name: string): string {
+  if (rpc_name === 'rococo') {
+    return RococoSquidEndpoint
+  }
+  return KusamaSquidEndpoint
 }
 
 export function graphFetch<D>(
@@ -32,7 +36,7 @@ export function graphFetch<D>(
 export function fetchQuery<D>(
   query: GraphQuery,
 ): Promise<GraphLike<D>> {
-  const baseURL = getUrl()
+  const baseURL = getUrl("rococo")
   return graphFetch<D>(baseURL, query)
 }
 

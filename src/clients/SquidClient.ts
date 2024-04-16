@@ -395,8 +395,8 @@ class SquidClient {
     return advancedBuild('call: requestCoreCountExts', recFields, {})
   }
 
-  fetch<D>(query: GraphQuery): Promise<GraphLike<D>> {
-    const baseURL = getUrl()
+  fetch<D>(rpc_name: string, query: GraphQuery): Promise<GraphLike<D>> {
+    const baseURL = getUrl(rpc_name)
     const opts = getOptions({ query, baseURL, path: '' })
     return $fetch<GraphLike<D>>(baseURL, opts)
   }
