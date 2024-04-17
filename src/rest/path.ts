@@ -45,6 +45,7 @@ const makeQuery = (
 }
 
 export function pathToRequest(
+  rpc_name: string,
   path: string,
   options?: QueryProps<any>,
 ): GraphRequest {
@@ -54,7 +55,7 @@ export function pathToRequest(
     throw new ReferenceError(`[UNIQUERY::REST] Invalid path: ${path}`)
   }
 
-  const baseURL = getUrl()
+  const baseURL = getUrl(rpc_name)
   const graphQuery = makeQuery(call, id, options)
 
   return { baseURL, query: graphQuery, path }
