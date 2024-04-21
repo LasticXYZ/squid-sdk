@@ -106,7 +106,7 @@ describe('UNIQUERY UTILS', () => {
       const query = client.eventAllSaleInitialized()
 
       // Assuming you're testing the fetch operation's result
-      const result: GraphLike<SaleInitializedEvent[]> = await client.fetch("dev", query)
+      const result: GraphLike<SaleInitializedEvent[]> = await client.fetch("rococo", query)
       //console.log(result.data.event);
 
       expect(result).toHaveProperty('data.event')
@@ -119,7 +119,7 @@ describe('UNIQUERY UTILS', () => {
       const query = client.eventCorePurchased(54)
       console.log(query);
       // Assuming you're testing the fetch operation's result
-      const result = await client.fetch("dev", query)
+      const result = await client.fetch("rococo", query)
       console.log(result.data.event);
 
       expect(result).toHaveProperty('data.event')
@@ -168,7 +168,7 @@ describe('UNIQUERY UTILS', () => {
     queryEventFunctions.forEach(({ func, type }) => {
       it(`should fetch data successfully for ${type}`, async () => {
         const query = func.call(client); // Call the function on the client instance
-        const result = await client.fetch("dev", query); // Fetch the data
+        const result = await client.fetch("rococo", query); // Fetch the data
                 
         expect(result).toHaveProperty('data.event'); // General assertion; adjust as needed
       });
@@ -203,7 +203,7 @@ describe('UNIQUERY UTILS', () => {
     queryCallFunctions.forEach(({ func, type }) => {
       it(`should fetch data successfully for ${type}`, async () => {
         const query = func.call(client); // Call the function on the client instance
-        const result = await client.fetch("dev", query); // Fetch the data
+        const result = await client.fetch("rococo", query); // Fetch the data
         
         //console.log(result.data.call); // Optional: Log for debugging
         
