@@ -68,7 +68,11 @@ import {
   DropContributionCall,
   DropHistoryCall,
   DropRenewalCall,
-  RequestCoreCountCall
+  RequestCoreCountCall,
+  NewMultisigEvent,
+  MultisigApprovalEvent,
+  MultisigExecutedEvent,
+  MultisigCancelledEvent
 } from '../types'
 
 import {
@@ -87,30 +91,46 @@ class SquidClient {
 
   //collectionById(id: string, recFields?: ObjProp<SquidCollection>): GraphQuery {
   //   const toQuery = getrecFields(recFields)
-  //   return advancedBuild('collection: collectionEntityById', toQuery, {
+  //   return advancedBuild2('collection: collectionEntityById', toQuery, {
   //     id: { type: 'String', required: true, value: id, name: 'id' },
   //   })
   // }
 
-  eventAllHistoryInitialized(): GraphQuery {
-    const recFields = getRecursiveFields(HistoryInitializedEvent)
-    return advancedBuild('event: historyInitializeds', recFields, {})
+  eventAllNewMultisigs(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(PurchasedEvent)
+    return advancedBuild2('event: newMultisigs', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[NewMultisigsOrderByInput!]'},
+    })
   }
 
-  eventAllSaleInitialized(): GraphQuery {
-    const recFields = getRecursiveFields(SaleInitializedEvent)
-    return advancedBuild('event: saleInitializeds', recFields, {})
+  eventAllHistoryInitialized(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(HistoryInitializedEvent)
+    return advancedBuild2('event: historyInitializeds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[HistoryInitializedOrderByInput!]'},
+    })
   }
 
-  eventAllSalesStarted(): GraphQuery {
-    const recFields = getRecursiveFields(SalesStartedEvent)
-    return advancedBuild('event: salesStarteds', recFields, {})
+  eventAllSaleInitialized(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(SaleInitializedEvent)
+    return advancedBuild2('event: saleInitializeds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[SaleInitializedOrderByInput!]'},
+    })
   }
 
-  // eventAllPurchased(): GraphQuery {
-  //   const recFields = getRecursiveFields(PurchasedEvent)
-  //   return advancedBuild('event: purchaseds', recFields, {})
-  // }
+  eventAllSalesStarted(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(SalesStartedEvent)
+    return advancedBuild2('event: salesStarteds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[SalesStartedOrderByInput!]'},
+    })
+  }
 
   eventAllPurchased(limit: number = 10, offset: number = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(PurchasedEvent)
@@ -153,19 +173,31 @@ class SquidClient {
     })
   }
 
-  eventAllRenewable(): GraphQuery {
-    const recFields = getRecursiveFields(RenewableEvent)
-    return advancedBuild('event: renewables', recFields, {})
+  eventAllRenewable(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(RenewableEvent)
+    return advancedBuild2('event: renewables', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[RenewableOrderByInput!]'},
+    })
   }
 
-  eventAllRenewed(): GraphQuery {
-    const recFields = getRecursiveFields(RenewedEvent)
-    return advancedBuild('event: reneweds', recFields, {})
+  eventAllRenewed(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(RenewedEvent)
+    return advancedBuild2('event: reneweds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[RenewedOrderByInput!]'},
+    })
   }
 
-  eventAllTransferred(): GraphQuery {
-    const recFields = getRecursiveFields(TransferredEvent)
-    return advancedBuild('event: transferreds', recFields, {})
+  eventAllTransferred(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(TransferredEvent)
+    return advancedBuild2('event: transferreds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[TransferredOrderByInput!]'},
+    })
   }
 
   eventWhoTransferred(who: string): GraphQuery {
@@ -195,204 +227,401 @@ class SquidClient {
   }
 
 
-  eventAllPartitioned(): GraphQuery {
-    const recFields = getRecursiveFields(PartitionedEvent)
-    return advancedBuild('event: partitioneds', recFields, {})
+  eventAllPartitioned(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(PartitionedEvent)
+    return advancedBuild2('event: partitioneds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[PartitionedOrderByInput!]'},
+    })
   }
 
-  eventAllInterlaced(): GraphQuery {
-    const recFields = getRecursiveFields(InterlacedEvent)
-    return advancedBuild('event: interlaceds', recFields, {})
+  eventAllInterlaced(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(InterlacedEvent)
+    return advancedBuild2('event: interlaceds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[InterlacedOrderByInput!]'},
+    })
   }
 
-  eventAllAssigned(): GraphQuery {
-    const recFields = getRecursiveFields(AssignedEvent)
-    return advancedBuild('event: assigneds', recFields, {})
+  eventAllAssigned(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(AssignedEvent)
+    return advancedBuild2('event: assigneds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[AssignedOrderByInput!]'},
+    })
   }
 
-  eventAllPooled(): GraphQuery {
-    const recFields = getRecursiveFields(PooledEvent)
-    return advancedBuild('event: pooleds', recFields, {})
+  eventAllPooled(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(PooledEvent)
+    return advancedBuild2('event: pooleds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[PooledOrderByInput!]'},
+    })
   }
 
-  eventAllCoreCountRequested(): GraphQuery {
-    const recFields = getRecursiveFields(CoreCountRequestedEvent)
-    return advancedBuild('event: coreCountRequesteds', recFields, {})
+  eventAllCoreCountRequested(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(CoreCountRequestedEvent)
+    return advancedBuild2('event: coreCountRequesteds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[CoreCountRequestedOrderByInput!]'},
+    })
   }
 
-  eventAllCoreCountChanged(): GraphQuery {
-    const recFields = getRecursiveFields(CoreCountChangedEvent)
-    return advancedBuild('event: coreCountChangeds', recFields, {})
+  eventAllCoreCountChanged(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(CoreCountChangedEvent)
+    return advancedBuild2('event: coreCountChangeds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[CoreCountChangedOrderByInput!]'},
+    })
   }
 
-  eventAllReservationMade(): GraphQuery {
-    const recFields = getRecursiveFields(ReservationMadeEvent)
-    return advancedBuild('event: reservationMades', recFields, {})
+  eventAllReservationMade(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(ReservationMadeEvent)
+    return advancedBuild2('event: reservationMades', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[ReservationMadeOrderByInput!]'},
+    })
   }
 
-  eventAllReservationCancelled(): GraphQuery {
-    const recFields = getRecursiveFields(ReservationCancelledEvent)
-    return advancedBuild('event: reservationCancelleds', recFields, {})
+  eventAllReservationCancelled(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(ReservationCancelledEvent)
+    return advancedBuild2('event: reservationCancelleds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[ReservationCancelledOrderByInput!]'},
+    })
   }
 
-  eventAllLeased(): GraphQuery {
-    const recFields = getRecursiveFields(LeasedEvent)
-    return advancedBuild('event: leaseds', recFields, {})
+  eventAllLeased(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(LeasedEvent)
+    return advancedBuild2('event: leaseds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[LeasedOrderByInput!]'},
+    })
   }
 
-  eventAllLeaseEnding(): GraphQuery {
-    const recFields = getRecursiveFields(LeaseEndingEvent)
-    return advancedBuild('event: leaseEndings', recFields, {})
+  eventAllLeaseEnding(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(LeaseEndingEvent)
+    return advancedBuild2('event: leaseEndings', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[LeaseEndingOrderByInput!]'},
+    })
   }
 
-  eventAllRevenueClaimBegun(): GraphQuery {
-    const recFields = getRecursiveFields(RevenueClaimBegunEvent)
-    return advancedBuild('event: revenueClaimBeguns', recFields, {})
+  eventAllRevenueClaimBegun(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(RevenueClaimBegunEvent)
+    return advancedBuild2('event: revenueClaimBeguns', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[RevenueClaimBegunOrderByInput!]'},
+    })
   }
 
-  eventAllRevenueClaimItem(): GraphQuery {
-    const recFields = getRecursiveFields(RevenueClaimItemEvent)
-    return advancedBuild('event: revenueClaimItems', recFields, {})
+  eventAllRevenueClaimItem(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(RevenueClaimItemEvent)
+    return advancedBuild2('event: revenueClaimItems', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[RevenueClaimItemOrderByInput!]'},
+    })
   }
 
-  eventAllRevenueClaimPaid(): GraphQuery {
-    const recFields = getRecursiveFields(RevenueClaimPaidEvent)
-    return advancedBuild('event: revenueClaimPaids', recFields, {})
+  eventAllRevenueClaimPaid(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(RevenueClaimPaidEvent)
+    return advancedBuild2('event: revenueClaimPaids', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[RevenueClaimPaidOrderByInput!]'},
+    })
   }
 
-  eventAllCreditPurchased(): GraphQuery {
-    const recFields = getRecursiveFields(CreditPurchasedEvent)
-    return advancedBuild('event: creditPurchaseds', recFields, {})
+  eventAllCreditPurchased(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(CreditPurchasedEvent)
+    return advancedBuild2('event: creditPurchaseds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[CreditPurchasedOrderByInput!]'},
+    })
   }
 
-  eventAllRegionDropped(): GraphQuery {
-    const recFields = getRecursiveFields(RegionDroppedEvent)
-    return advancedBuild('event: regionDroppeds', recFields, {})
+  eventAllRegionDropped(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(RegionDroppedEvent)
+    return advancedBuild2('event: regionDroppeds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[RegionDroppedOrderByInput!]'},
+    })
   }
 
-  eventAllContributionDropped(): GraphQuery {
-    const recFields = getRecursiveFields(ContributionDroppedEvent)
-    return advancedBuild('event: contributionDroppeds', recFields, {})
+  eventAllContributionDropped(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(ContributionDroppedEvent)
+    return advancedBuild2('event: contributionDroppeds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[ContributionDroppedOrderByInput!]'},
+    })
   }
 
-  eventAllHistoryDropped(): GraphQuery {
-    const recFields = getRecursiveFields(HistoryDroppedEvent)
-    return advancedBuild('event: historyDroppeds', recFields, {})
+  eventAllHistoryDropped(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(HistoryDroppedEvent)
+    return advancedBuild2('event: historyDroppeds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[HistoryDroppedOrderByInput!]'},
+    })
   }
 
-  eventAllHistoryIgnored(): GraphQuery {
-    const recFields = getRecursiveFields(HistoryIgnoredEvent)
-    return advancedBuild('event: historyIgnoreds', recFields, {})
+  eventAllHistoryIgnored(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(HistoryIgnoredEvent)
+    return advancedBuild2('event: historyIgnoreds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[HistoryIgnoredOrderByInput!]'},
+    })
   }
 
-  eventAllClaimsReady(): GraphQuery {
-    const recFields = getRecursiveFields(ClaimsReadyEvent)
-    return advancedBuild('event: claimsReadies', recFields, {})
+  eventAllClaimsReady(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(ClaimsReadyEvent)
+    return advancedBuild2('event: claimsReadies', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[ClaimsReadyOrderByInput!]'},
+    })
   }
 
-  eventAllCoreAssigned(): GraphQuery {
-    const recFields = getRecursiveFields(CoreAssignedEvent)
-    return advancedBuild('event: coreAssigneds', recFields, {})
+  eventAllCoreAssigned(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(CoreAssignedEvent)
+    return advancedBuild2('event: coreAssigneds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[CoreAssignedOrderByInput!]'},
+    })
   }
 
-  eventAllAllowedRenewalDropped(): GraphQuery {
-    const recFields = getRecursiveFields(AllowedRenewalDroppedEvent)
-    return advancedBuild('event: allowedRenewalDroppeds', recFields, {})
+  eventAllAllowedRenewalDropped(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(AllowedRenewalDroppedEvent)
+    return advancedBuild2('event: allowedRenewalDroppeds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[AllowedRenewalDroppedOrderByInput!]'},
+    })
   }
 
-  callAllConfigure(): GraphQuery {
-    const recFields = getRecursiveFields(ConfigureCall)
-    return advancedBuild('call: configureExts', recFields, {})
+  callAllConfigure(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(ConfigureCall)
+    return advancedBuild2('call: configureExts', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[ConfigureExtOrderByInput!]'},
+    })
   }
 
-  callAllReserve(): GraphQuery {
-    const recFields = getRecursiveFields(ReserveCall)
-    return advancedBuild('call: reserveExts', recFields, {})
+  callAllReserve(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(ReserveCall)
+    return advancedBuild2('call: reserveExts', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[ReserveExtOrderByInput!]'},
+    })
   }
 
-  callAllUnreserve(): GraphQuery {
-    const recFields = getRecursiveFields(UnreserveCall)
-    return advancedBuild('call: unreserveExts', recFields, {})
+  callAllUnreserve(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(UnreserveCall)
+    return advancedBuild2('call: unreserveExts', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[UnreserveExtOrderByInput!]'},
+    })
   }
 
-  callAllSetLease(): GraphQuery {
-    const recFields = getRecursiveFields(SetLeaseCall)
-    return advancedBuild('call: setLeaseExts', recFields, {})
+  callAllSetLease(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(SetLeaseCall)
+    return advancedBuild2('call: setLeaseExts', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[SetLeaseExtOrderByInput!]'},
+    })
   }
 
-  callAllStartSales(): GraphQuery {
-    const recFields = getRecursiveFields(StartSalesCall)
-    return advancedBuild('call: startSalesExts', recFields, {})
+  callAllStartSales(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(StartSalesCall)
+    return advancedBuild2('call: startSalesExts', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[StartSalesExtOrderByInput!]'},
+    })
   }
 
-  callAllPurchase(): GraphQuery {
-    const recFields = getRecursiveFields(PurchaseCall)
-    return advancedBuild('call: purchaseExts', recFields, {})
+  callAllPurchase(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(PurchaseCall)
+    return advancedBuild2('call: purchaseExts', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[PurchaseExtOrderByInput!]'},
+    })
   }
 
-  callAllRenew(): GraphQuery {
-    const recFields = getRecursiveFields(RenewCall)
-    return advancedBuild('call: renewExts', recFields, {})
+  callAllRenew(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(RenewCall)
+    return advancedBuild2('call: renewExts', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[RenewExtOrderByInput!]'},
+    })
   }
 
-  callAllTransfer(): GraphQuery {
-    const recFields = getRecursiveFields(TransferCall)
-    return advancedBuild('call: transferExts', recFields, {})
+  callAllTransfer(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(TransferCall)
+    return advancedBuild2('call: transferExts', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[TransferExtOrderByInput!]'},
+    })
   }
 
-  callAllPartition(): GraphQuery {
-    const recFields = getRecursiveFields(PartitionCall)
-    return advancedBuild('call: partitionExts', recFields, {})
+  callAllPartition(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(PartitionCall)
+    return advancedBuild2('call: partitionExts', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[PartitionExtOrderByInput!]'},
+    })
   }
 
-  callAllInterlace(): GraphQuery {
-    const recFields = getRecursiveFields(InterlaceCall)
-    return advancedBuild('call: interlaceExts', recFields, {})
+  callAllInterlace(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(InterlaceCall)
+    return advancedBuild2('call: interlaceExts', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[InterlaceExtOrderByInput!]'},
+    })
   }
 
-  callAllAssign(): GraphQuery {
-    const recFields = getRecursiveFields(AssignCall)
-    return advancedBuild('call: assignExts', recFields, {})
+  callAllAssign(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(AssignCall)
+    return advancedBuild2('call: assignExts', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[AssignExtOrderByInput!]'},
+    })
   }
 
-  callAllPool(): GraphQuery {
-    const recFields = getRecursiveFields(PoolCall)
-    return advancedBuild('call: poolExts', recFields, {})
+  callAllPool(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(PoolCall)
+    return advancedBuild2('call: poolExts', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[PoolExtOrderByInput!]'},
+    })
   }
 
-  callAllClaimRevenue(): GraphQuery {
-    const recFields = getRecursiveFields(ClaimRevenueCall)
-    return advancedBuild('call: claimRevenueExts', recFields, {})
+  callAllClaimRevenue(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(ClaimRevenueCall)
+    return advancedBuild2('call: claimRevenueExts', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[ClaimRevenueExtOrderByInput!]'},
+    })
   }
 
-  callAllPurchaseCredit(): GraphQuery {
-    const recFields = getRecursiveFields(PurchaseCreditCall)
-    return advancedBuild('call: purchaseCreditExts', recFields, {})
+  callAllPurchaseCredit(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(PurchaseCreditCall)
+    return advancedBuild2('call: purchaseCreditExts', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[PurchaseCreditExtOrderByInput!]'},
+    })
   }
 
-  callAllDropRegion(): GraphQuery {
-    const recFields = getRecursiveFields(DropRegionCall)
-    return advancedBuild('call: dropRegionExts', recFields, {})
+  callAllDropRegion(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(DropRegionCall)
+    return advancedBuild2('call: dropRegionExts', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[DropRegionExtOrderByInput!]'},
+    })
   }
 
-  callAllDropContribution(): GraphQuery {
-    const recFields = getRecursiveFields(DropContributionCall)
-    return advancedBuild('call: dropContributionExts', recFields, {})
+  callAllDropContribution(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(DropContributionCall)
+    return advancedBuild2('call: dropContributionExts', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[DropContributionExtOrderByInput!]'},
+    })
   }
 
-  callAllDropHistory(): GraphQuery {
-    const recFields = getRecursiveFields(DropHistoryCall)
-    return advancedBuild('call: dropHistoryExts', recFields, {})
+  callAllDropHistory(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(DropHistoryCall)
+    return advancedBuild2('call: dropHistoryExts', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[DropHistoryExtOrderByInput!]'},
+    })
   }
 
-  callAllDropRenewal(): GraphQuery {
-    const recFields = getRecursiveFields(DropRenewalCall)
-    return advancedBuild('call: dropRenewalExts', recFields, {})
+  callAllDropRenewal(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(DropRenewalCall)
+    return advancedBuild2('call: dropRenewalExts', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[DropRenewalExtOrderByInput!]'},
+    })
   }
 
-  callAllRequestCoreCount(): GraphQuery {
-    const recFields = getRecursiveFields(RequestCoreCountCall)
-    return advancedBuild('call: requestCoreCountExts', recFields, {})
+  callAllRequestCoreCount(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(RequestCoreCountCall)
+    return advancedBuild2('call: requestCoreCountExts', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[RequestCoreCountExtOrderByInput!]'},
+    })
+  }
+
+  // Multisig Events 
+  eventAllNewMultisig(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(NewMultisigEvent)
+    return advancedBuild2('event: newMultisigs', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[NewMultisigOrderByInput!]'},
+    })
+  }
+
+  eventAllMultisigApproval(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(MultisigApprovalEvent)
+    return advancedBuild2('event: multisigApprovals', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[MultisigApprovalOrderByInput!]'},
+    })
+  }
+
+  eventAllMultisigExecuted(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(MultisigExecutedEvent)
+    return advancedBuild2('event: multisigExecuteds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[MultisigExecutedOrderByInput!]'},
+    })
+  }
+
+  eventAllMultisigCancelled(limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(MultisigCancelledEvent)
+    return advancedBuild2('event: multisigCancelleds', recFields, {
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[MultisigCancelledOrderByInput!]'},
+    })
   }
 
   fetch<D>(rpc_name: string, query: GraphQuery): Promise<GraphLike<D>> {

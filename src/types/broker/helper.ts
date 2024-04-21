@@ -69,6 +69,16 @@ class CoreAssignment_Wrap {
     value: number | null = null;
 }
 
+class Timepoint {
+    height: number | null
+    index: number | null
+
+    constructor() {
+        this.height = 0;
+        this.index = 0;
+    }
+}
+
 
 export {
     RegionId,
@@ -77,5 +87,6 @@ export {
     ConfigRecord,
     NewRegionIds,
     CoreAssignment,
-    CoreAssignment_Wrap
+    CoreAssignment_Wrap,
+    Timepoint
 }
