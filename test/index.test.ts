@@ -223,7 +223,7 @@ describe('UNIQUERY UTILS', () => {
     });
 
     it("should fetch data by specific owner successfully", async () => {
-      const query = client.eventWhoCoreOwner("5GxBaAJmPQAen737CXsHoWX2WpsarY2awq26cLmpdN1K2Shc", 126690, 127174);
+      const query = client.eventWhoCoreOwner("5GxBaAJmPQAen737CXsHoWX2WpsarY2awq26cLmpdN1K2Shc", 126690, 127950);
       const result = await client.fetch("rococo", query);
       //console.log(result.data.event);
       expect(result).toHaveProperty('data.event');

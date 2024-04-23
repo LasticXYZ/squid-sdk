@@ -171,7 +171,7 @@ class SquidClient {
     })
   }
 
-  eventRegionCoreOwner(coreNb: number, begin: number, mask: string, limit: number = 10, offset: number = 0): GraphQuery {
+  eventSpecificRegionCoreOwner(coreNb: number, begin: number, mask: string, limit: number = 10, offset: number = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(CoreOwnerEvent)
     return advancedBuild2('event: coreOwners', recFields, {
       where: { 
