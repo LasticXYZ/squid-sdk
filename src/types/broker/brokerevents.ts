@@ -44,6 +44,17 @@ class PurchasedEvent {
     duration: number | null = null;
 }
 
+class CoreOwnerEvent {
+    id: string | null = null;
+    blockNumber: number | null = null;
+    timestamp: Date | null = null;
+    owner: string | null = null;
+    regionId: RegionId = new RegionId();
+    price: bigint | null = null;
+    duration: number | null = null;
+}
+
+
 class RenewableEvent {
     id: string | null = null;
     blockNumber: number | null = null;
@@ -269,6 +280,7 @@ class AllowedRenewalDroppedEvent {
 
 // Export all classs
 export {
+    CoreOwnerEvent,
     HistoryInitializedEvent,
     SaleInitializedEvent,
     SalesStartedEvent,
