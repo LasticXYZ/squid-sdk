@@ -133,7 +133,7 @@ class SquidClient {
     })
   }
 
-  eventAllCoreOwners(begin_gte: number = 0, begin_lt: number = undefined, limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllCoreOwner(begin_gte: number = 0, begin_lt: number = undefined, limit: number = 10, offset: number = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(CoreOwnerEvent);
     const whereClause = {
       value: {
@@ -150,16 +150,21 @@ class SquidClient {
     });
   }
 
-  eventWhoCoreOwner(who: string, limit: number = 10, offset: number = 0): GraphQuery {
+  eventWhoCoreOwner(owner: string, begin_gte: number = 0, begin_lt: number = undefined, limit: number = 10, offset: number = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(CoreOwnerEvent)
-    return advancedBuild2('event: coreOwners', recFields, {
-      where: { 
-        value: {
-          'who_eq': who
-        }, 
-        type: 'CoreOwnerWhereInput',
-        required: true 
+    const whereClause = {
+      value: {
+        'owner_eq': owner,
+        regionId: { 
+          begin_gte: begin_gte,
+          ...(begin_lt !== undefined && { begin_lt: begin_lt })
+        }
       },
+      type: 'CoreOwnerWhereInput',
+      required: true
+    };
+    return advancedBuild2('event: coreOwners', recFields, {
+      where: whereClause,
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
       orderBy: { value: 'id_DESC', required: true, type: '[CoreOwnerOrderByInput!]'},

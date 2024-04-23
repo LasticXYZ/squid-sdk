@@ -216,12 +216,26 @@ describe('UNIQUERY UTILS', () => {
   describe("Core Owners Query", () => {
     const client = getClient();
     it("should fetch data successfully", async () => {
-      const query = client.eventAllCoreOwners(126859, 127174);
+      const query = client.eventAllCoreOwner(126859, 127174);
+      const result = await client.fetch("rococo", query);
+      //console.log(result.data.event);
+      expect(result).toHaveProperty('data.event');
+    });
+
+    it("should fetch data by specific owner successfully", async () => {
+      const query = client.eventWhoCoreOwner("5GxBaAJmPQAen737CXsHoWX2WpsarY2awq26cLmpdN1K2Shc", 126690, 127174);
+      const result = await client.fetch("rococo", query);
+      //console.log(result.data.event);
+      expect(result).toHaveProperty('data.event');
+    });
+
+    it("should fetch data of a specific region", async () => {
+      const query = client.eventSpecificRegionCoreOwner(78, 126859, "0xffffffffffffffffffff");
       const result = await client.fetch("rococo", query);
       console.log(result.data.event);
       expect(result).toHaveProperty('data.event');
-    }
-    );
+    });
+
   });
   
 
