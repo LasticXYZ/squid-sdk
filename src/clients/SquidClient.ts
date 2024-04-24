@@ -150,6 +150,42 @@ class SquidClient {
     });
   }
 
+  eventOwnedAndAssignedCoreOwner(owner: string, limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(CoreOwnerEvent)
+    const whereClause = {
+      value: {
+        'owner_eq': owner,
+        'assigned_eq': true,
+      },
+      type: 'CoreOwnerWhereInput',
+      required: true
+    };
+    return advancedBuild2('event: coreOwners', recFields, {
+      where: whereClause,
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[CoreOwnerOrderByInput!]'},
+    })
+  }
+
+  eventOwnedAndPooledCoreOwner(owner: string, limit: number = 10, offset: number = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(CoreOwnerEvent)
+    const whereClause = {
+      value: {
+        'owner_eq': owner,
+        'pooled_eq': true,
+      },
+      type: 'CoreOwnerWhereInput',
+      required: true
+    };
+    return advancedBuild2('event: coreOwners', recFields, {
+      where: whereClause,
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[CoreOwnerOrderByInput!]'},
+    })
+  }
+
   eventWhoCoreOwner(owner: string, begin_gte: number = 0, begin_lt: number = undefined, limit: number = 10, offset: number = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(CoreOwnerEvent)
     const whereClause = {
