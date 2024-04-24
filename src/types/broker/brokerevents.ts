@@ -17,8 +17,8 @@ class SaleInitializedEvent {
     extrinsicHash?: string | null = null;
     saleStart: number | null = null;
     leadinLength: number | null = null;
-    startPrice: bigint | null = null;
-    regularPrice: bigint | null = null;
+    startPrice: string | null = null;
+    regularPrice: string | null = null;
     regionBegin: number | null = null;
     regionEnd: number | null = null;
     idealCoresSold: number | null = null;
@@ -52,6 +52,9 @@ class CoreOwnerEvent {
     regionId: RegionId = new RegionId();
     price: bigint | null = null;
     duration: number | null = null;
+    pooled: boolean | null = null;
+    assigned: boolean | null = null;
+    task: number | null = null;
 }
 
 

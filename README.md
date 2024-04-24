@@ -50,7 +50,7 @@ const client = getClient();
 const query = client.eventAllSaleInitialized();
 
 // Fetch the results
-const result: GraphLike<SaleInitializedEvent[]> = await client.fetch(query);
+const result: GraphLike<SaleInitializedEvent[]> = await client.fetch("rococo", query);
 ```
 
 This example demonstrates how to import necessary components from the SDK, initialize the client, build a query, and then fetch the data.
