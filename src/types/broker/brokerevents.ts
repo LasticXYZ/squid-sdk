@@ -30,7 +30,7 @@ class SalesStartedEvent {
     blockNumber: number | null = null;
     timestamp: Date | null = null;
     extrinsicHash?: string | null = null;
-    price: bigint | null = null;
+    price: string | null = null;
     coreCount: number | null = null;
 }
 
@@ -40,7 +40,7 @@ class PurchasedEvent {
     timestamp: Date | null = null;
     who: string | null = null;
     regionId: RegionId = new RegionId();
-    price: bigint | null = null;
+    price: string | null = null;
     duration: number | null = null;
 }
 
@@ -50,7 +50,7 @@ class CoreOwnerEvent {
     timestamp: Date | null = null;
     owner: string | null = null;
     regionId: RegionId = new RegionId();
-    price: bigint | null = null;
+    price: string | null = null;
     duration: number | null = null;
     pooled: boolean | null = null;
     assigned: boolean | null = null;
@@ -63,7 +63,7 @@ class RenewableEvent {
     blockNumber: number | null = null;
     timestamp: Date | null = null;
     core: number | null = null;
-    price: bigint | null = null;
+    price: string | null = null;
     begin: number | null = null;
     workload: ScheduleItem[] = [];
 
@@ -77,7 +77,7 @@ class RenewedEvent {
     blockNumber: number | null = null;
     timestamp: Date | null = null;
     who: string | null = null;
-    price: bigint | null = null;
+    price: string | null = null;
     oldCore: number | null = null;
     core: number | null = null;
     begin: number | null = null;
