@@ -21,7 +21,7 @@ describe('UNIQUERY UTILS', () => {
       const url = getUrl("rococo")
       expect(url).eq('https://lastic.squids.live/rococo-coretime/graphql')
       const url2 = getUrl("kusama")
-      expect(url2).eq('https://lastic.squids.live/kusama-coretime/v/v1/graphql')
+      expect(url2).eq('https://lastic.squids.live/kusama-coretime/graphql')
     })
   })
 
@@ -231,6 +231,20 @@ describe('UNIQUERY UTILS', () => {
 
     it("should fetch data of a specific region", async () => {
       const query = client.eventSpecificRegionCoreOwner(78, 126859, "0xffffffffffffffffffff");
+      const result = await client.fetch("rococo", query);
+      //console.log(result.data.event);
+      expect(result).toHaveProperty('data.event');
+    });
+
+    it("should fetch data of owned and assigned core owner", async () => {
+      const query = client.eventOwnedAndAssignedCoreOwner("5GxBaAJmPQAen737CXsHoWX2WpsarY2awq26cLmpdN1K2Shc");
+      const result = await client.fetch("rococo", query);
+      //console.log(result.data.event);
+      expect(result).toHaveProperty('data.event');
+    });
+
+    it("should fetch data of owned and pooled core owner", async () => {
+      const query = client.eventOwnedAndPooledCoreOwner("5HNJjkjo3KGA3R1DanS82R47tV7G3avEZ8GzLDW9CQtkNjVW");
       const result = await client.fetch("rococo", query);
       console.log(result.data.event);
       expect(result).toHaveProperty('data.event');

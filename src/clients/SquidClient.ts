@@ -173,7 +173,7 @@ class SquidClient {
     const whereClause = {
       value: {
         'owner_eq': owner,
-        'assigned_eq': true,
+        'pooled_eq': true,
       },
       type: 'CoreOwnerWhereInput',
       required: true
