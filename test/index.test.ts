@@ -246,11 +246,20 @@ describe('UNIQUERY UTILS', () => {
     it("should fetch data of owned and pooled core owner", async () => {
       const query = client.eventOwnedAndPooledCoreOwner("5HNJjkjo3KGA3R1DanS82R47tV7G3avEZ8GzLDW9CQtkNjVW");
       const result = await client.fetch("rococo", query);
-      console.log(result.data.event);
+      //console.log(result.data.event);
       expect(result).toHaveProperty('data.event');
     });
 
   });
-  
+
+  describe("Cores Sold In this Sale", () => {
+    it("should fetch data successfully", async () => {
+      const client = getClient();
+      const query = client.coresSoldInThisSale(127950);
+      const result = await client.fetch("rococo", query);
+      console.log(result.data.event);
+      expect(result).toHaveProperty('data.event');
+    })
+  });  
 
 })

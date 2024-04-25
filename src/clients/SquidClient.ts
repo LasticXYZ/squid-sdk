@@ -90,12 +90,18 @@ class SquidClient {
   constructor() {
   }
 
-  //collectionById(id: string, recFields?: ObjProp<SquidCollection>): GraphQuery {
-  //   const toQuery = getrecFields(recFields)
-  //   return advancedBuild2('collection: collectionEntityById', toQuery, {
-  //     id: { type: 'String', required: true, value: id, name: 'id' },
-  //   })
-  // }
+  // Returns how many cores have been sold in a specific sale
+  coresSoldInThisSale(begin: number): GraphQuery {
+    return {
+    query: `{
+      event: purchasedsConnection(orderBy: id_DESC, where: {regionId: {begin_eq: ${begin}}}) {
+        totalCount
+      }
+      }
+      `,
+      variables: {}
+    }
+  }
 
   eventAllNewMultisigs(limit: number = 10, offset: number = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(PurchasedEvent)
