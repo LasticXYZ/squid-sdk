@@ -97,7 +97,7 @@ class SquidClient {
     return advancedBuild2('event: newMultisigs', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[NewMultisigsOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[NewMultisigsOrderByInput!]' },
     })
   }
 
@@ -106,7 +106,7 @@ class SquidClient {
     return advancedBuild2('event: historyInitializeds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[HistoryInitializedOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[HistoryInitializedOrderByInput!]' },
     })
   }
 
@@ -115,7 +115,7 @@ class SquidClient {
     return advancedBuild2('event: saleInitializeds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[SaleInitializedOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[SaleInitializedOrderByInput!]' },
     })
   }
 
@@ -124,7 +124,7 @@ class SquidClient {
     return advancedBuild2('event: salesStarteds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[SalesStartedOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[SalesStartedOrderByInput!]' },
     })
   }
 
@@ -159,7 +159,7 @@ class SquidClient {
       where: whereClause,
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[CoreOwnerOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[CoreOwnerOrderByInput!]' },
     })
   }
 
@@ -177,7 +177,7 @@ class SquidClient {
       where: whereClause,
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[CoreOwnerOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[CoreOwnerOrderByInput!]' },
     })
   }
 
@@ -198,7 +198,7 @@ class SquidClient {
       where: whereClause,
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[CoreOwnerOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[CoreOwnerOrderByInput!]' },
     })
   }
 
@@ -218,7 +218,7 @@ class SquidClient {
       },
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[CoreOwnerOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[CoreOwnerOrderByInput!]' },
     })
   }
 
@@ -227,7 +227,7 @@ class SquidClient {
     return advancedBuild2('event: purchaseds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[PurchasedOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[PurchasedOrderByInput!]' },
     })
   }
 
@@ -243,7 +243,7 @@ class SquidClient {
       },
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[PurchasedOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[PurchasedOrderByInput!]' },
     })
   }
 
@@ -259,7 +259,7 @@ class SquidClient {
       },
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[PurchasedOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[PurchasedOrderByInput!]' },
     })
   }
 
@@ -268,7 +268,7 @@ class SquidClient {
     return advancedBuild2('event: renewables', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[RenewableOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[RenewableOrderByInput!]' },
     })
   }
 
@@ -277,7 +277,7 @@ class SquidClient {
     return advancedBuild2('event: reneweds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[RenewedOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[RenewedOrderByInput!]' },
     })
   }
 
@@ -286,7 +286,7 @@ class SquidClient {
     return advancedBuild2('event: transferreds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[TransferredOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[TransferredOrderByInput!]' },
     })
   }
 
@@ -322,7 +322,7 @@ class SquidClient {
     return advancedBuild2('event: partitioneds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[PartitionedOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[PartitionedOrderByInput!]' },
     })
   }
 
@@ -331,7 +331,7 @@ class SquidClient {
     return advancedBuild2('event: interlaceds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[InterlacedOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[InterlacedOrderByInput!]' },
     })
   }
 
@@ -340,7 +340,7 @@ class SquidClient {
     return advancedBuild2('event: assigneds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[AssignedOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[AssignedOrderByInput!]' },
     })
   }
 
@@ -349,7 +349,7 @@ class SquidClient {
     return advancedBuild2('event: pooleds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[PooledOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[PooledOrderByInput!]' },
     })
   }
 
@@ -358,7 +358,7 @@ class SquidClient {
     return advancedBuild2('event: coreCountRequesteds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[CoreCountRequestedOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[CoreCountRequestedOrderByInput!]' },
     })
   }
 
@@ -367,7 +367,7 @@ class SquidClient {
     return advancedBuild2('event: coreCountChangeds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[CoreCountChangedOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[CoreCountChangedOrderByInput!]' },
     })
   }
 
@@ -376,7 +376,7 @@ class SquidClient {
     return advancedBuild2('event: reservationMades', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[ReservationMadeOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[ReservationMadeOrderByInput!]' },
     })
   }
 
@@ -385,7 +385,7 @@ class SquidClient {
     return advancedBuild2('event: reservationCancelleds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[ReservationCancelledOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[ReservationCancelledOrderByInput!]' },
     })
   }
 
@@ -394,7 +394,7 @@ class SquidClient {
     return advancedBuild2('event: leaseds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[LeasedOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[LeasedOrderByInput!]' },
     })
   }
 
@@ -403,7 +403,7 @@ class SquidClient {
     return advancedBuild2('event: leaseEndings', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[LeaseEndingOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[LeaseEndingOrderByInput!]' },
     })
   }
 
@@ -412,7 +412,7 @@ class SquidClient {
     return advancedBuild2('event: revenueClaimBeguns', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[RevenueClaimBegunOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[RevenueClaimBegunOrderByInput!]' },
     })
   }
 
@@ -421,7 +421,7 @@ class SquidClient {
     return advancedBuild2('event: revenueClaimItems', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[RevenueClaimItemOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[RevenueClaimItemOrderByInput!]' },
     })
   }
 
@@ -430,7 +430,7 @@ class SquidClient {
     return advancedBuild2('event: revenueClaimPaids', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[RevenueClaimPaidOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[RevenueClaimPaidOrderByInput!]' },
     })
   }
 
@@ -439,7 +439,7 @@ class SquidClient {
     return advancedBuild2('event: creditPurchaseds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[CreditPurchasedOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[CreditPurchasedOrderByInput!]' },
     })
   }
 
@@ -448,7 +448,7 @@ class SquidClient {
     return advancedBuild2('event: regionDroppeds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[RegionDroppedOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[RegionDroppedOrderByInput!]' },
     })
   }
 
@@ -457,7 +457,7 @@ class SquidClient {
     return advancedBuild2('event: contributionDroppeds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[ContributionDroppedOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[ContributionDroppedOrderByInput!]' },
     })
   }
 
@@ -466,7 +466,7 @@ class SquidClient {
     return advancedBuild2('event: historyDroppeds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[HistoryDroppedOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[HistoryDroppedOrderByInput!]' },
     })
   }
 
@@ -475,7 +475,7 @@ class SquidClient {
     return advancedBuild2('event: historyIgnoreds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[HistoryIgnoredOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[HistoryIgnoredOrderByInput!]' },
     })
   }
 
@@ -484,7 +484,7 @@ class SquidClient {
     return advancedBuild2('event: claimsReadies', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[ClaimsReadyOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[ClaimsReadyOrderByInput!]' },
     })
   }
 
@@ -493,7 +493,7 @@ class SquidClient {
     return advancedBuild2('event: coreAssigneds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[CoreAssignedOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[CoreAssignedOrderByInput!]' },
     })
   }
 
@@ -502,7 +502,7 @@ class SquidClient {
     return advancedBuild2('event: allowedRenewalDroppeds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[AllowedRenewalDroppedOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[AllowedRenewalDroppedOrderByInput!]' },
     })
   }
 
@@ -511,7 +511,7 @@ class SquidClient {
     return advancedBuild2('call: configureExts', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[ConfigureExtOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[ConfigureExtOrderByInput!]' },
     })
   }
 
@@ -520,7 +520,7 @@ class SquidClient {
     return advancedBuild2('call: reserveExts', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[ReserveExtOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[ReserveExtOrderByInput!]' },
     })
   }
 
@@ -529,7 +529,7 @@ class SquidClient {
     return advancedBuild2('call: unreserveExts', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[UnreserveExtOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[UnreserveExtOrderByInput!]' },
     })
   }
 
@@ -538,7 +538,7 @@ class SquidClient {
     return advancedBuild2('call: setLeaseExts', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[SetLeaseExtOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[SetLeaseExtOrderByInput!]' },
     })
   }
 
@@ -547,7 +547,7 @@ class SquidClient {
     return advancedBuild2('call: startSalesExts', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[StartSalesExtOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[StartSalesExtOrderByInput!]' },
     })
   }
 
@@ -556,7 +556,7 @@ class SquidClient {
     return advancedBuild2('call: purchaseExts', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[PurchaseExtOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[PurchaseExtOrderByInput!]' },
     })
   }
 
@@ -565,7 +565,7 @@ class SquidClient {
     return advancedBuild2('call: renewExts', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[RenewExtOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[RenewExtOrderByInput!]' },
     })
   }
 
@@ -574,7 +574,7 @@ class SquidClient {
     return advancedBuild2('call: transferExts', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[TransferExtOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[TransferExtOrderByInput!]' },
     })
   }
 
@@ -583,7 +583,7 @@ class SquidClient {
     return advancedBuild2('call: partitionExts', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[PartitionExtOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[PartitionExtOrderByInput!]' },
     })
   }
 
@@ -592,7 +592,7 @@ class SquidClient {
     return advancedBuild2('call: interlaceExts', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[InterlaceExtOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[InterlaceExtOrderByInput!]' },
     })
   }
 
@@ -601,7 +601,7 @@ class SquidClient {
     return advancedBuild2('call: assignExts', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[AssignExtOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[AssignExtOrderByInput!]' },
     })
   }
 
@@ -610,7 +610,7 @@ class SquidClient {
     return advancedBuild2('call: poolExts', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[PoolExtOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[PoolExtOrderByInput!]' },
     })
   }
 
@@ -619,7 +619,7 @@ class SquidClient {
     return advancedBuild2('call: claimRevenueExts', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[ClaimRevenueExtOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[ClaimRevenueExtOrderByInput!]' },
     })
   }
 
@@ -628,7 +628,7 @@ class SquidClient {
     return advancedBuild2('call: purchaseCreditExts', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[PurchaseCreditExtOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[PurchaseCreditExtOrderByInput!]' },
     })
   }
 
@@ -637,7 +637,7 @@ class SquidClient {
     return advancedBuild2('call: dropRegionExts', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[DropRegionExtOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[DropRegionExtOrderByInput!]' },
     })
   }
 
@@ -646,7 +646,7 @@ class SquidClient {
     return advancedBuild2('call: dropContributionExts', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[DropContributionExtOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[DropContributionExtOrderByInput!]' },
     })
   }
 
@@ -655,7 +655,7 @@ class SquidClient {
     return advancedBuild2('call: dropHistoryExts', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[DropHistoryExtOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[DropHistoryExtOrderByInput!]' },
     })
   }
 
@@ -664,7 +664,7 @@ class SquidClient {
     return advancedBuild2('call: dropRenewalExts', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[DropRenewalExtOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[DropRenewalExtOrderByInput!]' },
     })
   }
 
@@ -673,7 +673,7 @@ class SquidClient {
     return advancedBuild2('call: requestCoreCountExts', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[RequestCoreCountExtOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[RequestCoreCountExtOrderByInput!]' },
     })
   }
 
@@ -683,7 +683,7 @@ class SquidClient {
     return advancedBuild2('event: newMultisigs', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[NewMultisigOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[NewMultisigOrderByInput!]' },
     })
   }
 
@@ -692,7 +692,7 @@ class SquidClient {
     return advancedBuild2('event: multisigApprovals', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[MultisigApprovalOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[MultisigApprovalOrderByInput!]' },
     })
   }
 
@@ -701,7 +701,7 @@ class SquidClient {
     return advancedBuild2('event: multisigExecuteds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[MultisigExecutedOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[MultisigExecutedOrderByInput!]' },
     })
   }
 
@@ -710,7 +710,7 @@ class SquidClient {
     return advancedBuild2('event: multisigCancelleds', recFields, {
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[MultisigCancelledOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[MultisigCancelledOrderByInput!]' },
     })
   }
 
