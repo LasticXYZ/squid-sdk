@@ -1,6 +1,6 @@
 class Assignment {
-    kind: string | null
-    value: number | null
+    kind: string | undefined
+    value: number | undefined
 
     constructor() {
         this.kind = '';
@@ -9,7 +9,7 @@ class Assignment {
 }
 
 class ScheduleItem {
-    mask: string | null;
+    mask: string | undefined;
     assignment: Assignment;
 
     constructor() {
@@ -19,14 +19,14 @@ class ScheduleItem {
 }
 
 class ConfigRecord {
-    advanceNotice: number | null
-    interludeLength: number | null
-    leadinLength: number | null
-    regionLength: number | null
-    idealBulkProportion: number | null
-    limitCoresOffered: number | null
-    renewalBump: number | null
-    contributionTimeout: number | null
+    advanceNotice: number | undefined
+    interludeLength: number | undefined
+    leadinLength: number | undefined
+    regionLength: number | undefined
+    idealBulkProportion: number | undefined
+    limitCoresOffered: number | undefined
+    renewalBump: number | undefined
+    contributionTimeout: number | undefined
 
     constructor() {
         this.advanceNotice = 0;
@@ -41,9 +41,9 @@ class ConfigRecord {
 }
 
 class RegionId {
-    begin: number | null
-    core: number | null
-    mask: string | null
+    begin: number | undefined
+    core: number | undefined
+    mask: string | undefined
 
     constructor() {
         // Ensure properties are initialized in a way that allows type checking
@@ -60,18 +60,18 @@ class NewRegionIds {
 }
 
 class CoreAssignment {
-    kind: string | null = null;
-    value: number | null = null;
+    kind: string | undefined = undefined;
+    value: number | undefined = undefined;
 }
 
-class CoreAssignment_Wrap {
+class CoreAssignmentWrap {
     assignment: CoreAssignment = new CoreAssignment();
-    value: number | null = null;
+    value: number | undefined = undefined;
 }
 
 class Timepoint {
-    height: number | null
-    index: number | null
+    height: number | undefined
+    index: number | undefined
 
     constructor() {
         this.height = 0;
@@ -87,6 +87,6 @@ export {
     ConfigRecord,
     NewRegionIds,
     CoreAssignment,
-    CoreAssignment_Wrap,
+    CoreAssignmentWrap,
     Timepoint
 }

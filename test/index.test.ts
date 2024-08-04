@@ -199,7 +199,7 @@ describe('UNIQUERY UTILS', () => {
   describe("Cores Sold In this Sale", () => {
     it("should fetch data successfully", async () => {
       const client = getClient();
-      const query = client.coresSoldInThisSale(127950);
+      const query = client.coresSoldInThisSale(127_950);
       const result = await client.fetch("rococo", query);
       console.log(result.data.event);
       expect(result).toHaveProperty('data.event');

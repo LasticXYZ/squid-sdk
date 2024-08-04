@@ -128,11 +128,11 @@ class SquidClient {
     })
   }
 
-  eventAllCoreOwner(begin_gte = 0, begin_lt = undefined, limit = 10, offset = 0): GraphQuery {
+  eventAllCoreOwner(begin_gte = 0, begin_lt: number, limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(CoreOwnerEvent);
     const whereClause = {
       value: {
-        regionId: { begin_gte: begin_gte, ...(begin_lt !== undefined && { begin_lt: begin_lt }) }
+        regionId: { begin_gte, ...(begin_lt !== undefined && { begin_lt }) }
       },
       type: 'CoreOwnerWhereInput',
       required: true
@@ -141,7 +141,7 @@ class SquidClient {
       where: whereClause,
       limit: { value: limit, required: true },
       offset: { value: offset, required: false },
-      orderBy: { value: 'id_DESC', required: true, type: '[CoreOwnerOrderByInput!]'},
+      orderBy: { value: 'id_DESC', required: true, type: '[CoreOwnerOrderByInput!]' },
     });
   }
 
@@ -181,14 +181,14 @@ class SquidClient {
     })
   }
 
-  eventWhoCoreOwner(owner: string, begin_gte = 0, begin_lt = undefined, limit = 10, offset = 0): GraphQuery {
+  eventWhoCoreOwner(owner: string, begin_gte = 0, begin_lt: number, limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(CoreOwnerEvent)
     const whereClause = {
       value: {
         'owner_eq': owner,
         regionId: { 
-          begin_gte: begin_gte,
-          ...(begin_lt !== undefined && { begin_lt: begin_lt })
+          begin_gte,
+          ...(begin_lt !== undefined && { begin_lt })
         }
       },
       type: 'CoreOwnerWhereInput',
@@ -252,7 +252,7 @@ class SquidClient {
     return advancedBuild2('event: purchaseds', recFields, {
       where: { 
         value: {
-          regionId: {core_eq: coreNb}
+          regionId: { core_eq: coreNb }
         }, 
         type: 'PurchasedWhereInput',
         required: true 
@@ -281,6 +281,22 @@ class SquidClient {
     })
   }
 
+  eventWhoRenewed(who: string, limit = 10, offset = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(RenewedEvent)
+    return advancedBuild2('event: reneweds', recFields, {
+      where: { 
+        value: {
+          'who_eq': who
+        }, 
+        type: 'RenewedWhereInput',
+        required: true 
+      },
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[RenewedOrderByInput!]' },
+    })
+  }
+
   eventAllTransferred(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(TransferredEvent)
     return advancedBuild2('event: transferreds', recFields, {
@@ -290,7 +306,7 @@ class SquidClient {
     })
   }
 
-  eventWhoTransferred(who: string): GraphQuery {
+  eventWhoTransferred(who: string, limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(TransferredEvent)
     return advancedBuild2('event: transferreds', recFields, {
       where: { 
@@ -300,6 +316,9 @@ class SquidClient {
         type: 'TransferredWhereInput',
         required: true 
       },
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[TransferredOrderByInput!]' },
     })
   }
 
@@ -308,7 +327,7 @@ class SquidClient {
     return advancedBuild2('event: transferreds', recFields, {
       where: { 
         value: {
-          regionId: {core_eq: coreNb}
+          regionId: { core_eq: coreNb }
         }, 
         type: 'TransferredWhereInput',
         required: true 

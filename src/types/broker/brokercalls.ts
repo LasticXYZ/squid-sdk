@@ -1,18 +1,18 @@
 import { RegionId, ScheduleItem, ConfigRecord } from "./helper";
 
 class ConfigureCall {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
     config: ConfigRecord = new ConfigRecord();
 }
 
 class ReserveCall {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
     workload: ScheduleItem[] = [];
     
     constructor() {
@@ -21,151 +21,151 @@ class ReserveCall {
 }
 
 class UnreserveCall {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
-    itemIndex: number | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
+    itemIndex: number | undefined = undefined;
 }
 
 class SetLeaseCall {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
-    task: number | null = null;
-    until: number | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
+    task: number | undefined = undefined;
+    until: number | undefined = undefined;
 }
 
 class StartSalesCall {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
-    initialPrice: bigint | null = null;
-    coreCount: number | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
+    initialPrice: bigint | undefined = undefined;
+    coreCount: number | undefined = undefined;
 }
 
 class PurchaseCall {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
-    priceLimit: bigint | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
+    priceLimit: bigint | undefined = undefined;
 }
 
 class RenewCall {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
-    core: number | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
+    core: number | undefined = undefined;
 }
 
 class TransferCall {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
     regionId: RegionId = new RegionId();
-    newOwner: string | null = null;
+    newOwner: string | undefined = undefined;
 }
 
 class PartitionCall {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
     regionId: RegionId = new RegionId();
-    pivot: number | null = null;
+    pivot: number | undefined = undefined;
 }
 
 class InterlaceCall {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
     regionId: RegionId = new RegionId();
-    pivot: string | null = null;
+    pivot: string | undefined = undefined;
 }
 
 class AssignCall {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
     regionId: RegionId = new RegionId();
-    task: number | null = null;
-    finality: string | null = null;
+    task: number | undefined = undefined;
+    finality: string | undefined = undefined;
 }
 
 class PoolCall {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
     regionId: RegionId = new RegionId();
-    payee: string | null = null;
-    finality: string | null = null;
+    payee: string | undefined = undefined;
+    finality: string | undefined = undefined;
 }
 
 class ClaimRevenueCall {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
     regionId: RegionId = new RegionId();
-    maxTimeslices: number | null = null;
+    maxTimeslices: number | undefined = undefined;
 }
 
 class PurchaseCreditCall {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
-    amount: bigint | null = null;
-    beneficiary: string | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
+    amount: bigint | undefined = undefined;
+    beneficiary: string | undefined = undefined;
 }
 
 class DropRegionCall {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
     regionId: RegionId = new RegionId();
 }
 
 class DropContributionCall {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
     regionId: RegionId = new RegionId();
 }
 
 class DropHistoryCall {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
-    when: number | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
+    when: number | undefined = undefined;
 }
 
 class DropRenewalCall {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
-    core: number | null = null;
-    when: number | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
+    core: number | undefined = undefined;
+    when: number | undefined = undefined;
 }
 
 class RequestCoreCountCall {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
-    coreCount: number | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
+    coreCount: number | undefined = undefined;
 }
 
 // Export all classs
