@@ -335,7 +335,6 @@ class SquidClient {
     })
   }
 
-
   eventAllPartitioned(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(PartitionedEvent)
     return advancedBuild2('event: partitioneds', recFields, {
@@ -343,6 +342,21 @@ class SquidClient {
       offset: { value: offset, required: false },
       orderBy: { value: 'id_DESC', required: true, type: '[PartitionedOrderByInput!]' },
     })
+  }
+
+  eventWhoPartitioned(owner: string, limit = 10, offset = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(PartitionedEvent);
+    const whereClause = {
+      value: { 'owner_eq': owner },
+      type: 'PartitionedWhereInput',
+      required: true
+    };
+    return advancedBuild2('event: partitioneds', recFields, {
+      where: whereClause,
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[PartitionedOrderByInput!]' },
+    });
   }
 
   eventAllInterlaced(limit = 10, offset = 0): GraphQuery {
@@ -354,6 +368,21 @@ class SquidClient {
     })
   }
 
+  eventWhoInterlaced(owner: string, limit = 10, offset = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(InterlacedEvent);
+    const whereClause = {
+      value: { 'owner_eq': owner },
+      type: 'InterlacedWhereInput',
+      required: true
+    };
+    return advancedBuild2('event: interlaceds', recFields, {
+      where: whereClause,
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[InterlacedOrderByInput!]' },
+    });
+  }
+
   eventAllAssigned(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(AssignedEvent)
     return advancedBuild2('event: assigneds', recFields, {
@@ -363,6 +392,21 @@ class SquidClient {
     })
   }
 
+  eventWhoAssigned(owner: string, limit = 10, offset = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(AssignedEvent);
+    const whereClause = {
+      value: { 'owner_eq': owner },
+      type: 'AssignedWhereInput',
+      required: true
+    };
+    return advancedBuild2('event: assigneds', recFields, {
+      where: whereClause,
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[AssignedOrderByInput!]' },
+    });
+  }
+
   eventAllPooled(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(PooledEvent)
     return advancedBuild2('event: pooleds', recFields, {
@@ -370,6 +414,21 @@ class SquidClient {
       offset: { value: offset, required: false },
       orderBy: { value: 'id_DESC', required: true, type: '[PooledOrderByInput!]' },
     })
+  }
+
+  eventWhoPooled(owner: string, limit = 10, offset = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(PooledEvent);
+    const whereClause = {
+      value: { 'owner_eq': owner },
+      type: 'PooledWhereInput',
+      required: true
+    };
+    return advancedBuild2('event: pooleds', recFields, {
+      where: whereClause,
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[PooledOrderByInput!]' },
+    });
   }
 
   eventAllCoreCountRequested(limit = 10, offset = 0): GraphQuery {
@@ -471,6 +530,21 @@ class SquidClient {
     })
   }
 
+  eventWhoRegionDropped(owner: string, limit = 10, offset = 0): GraphQuery {
+    const recFields = getRecursiveFieldstoArr(RegionDroppedEvent);
+    const whereClause = {
+      value: { 'owner_eq': owner },
+      type: 'RegionDroppedWhereInput',
+      required: true
+    };
+    return advancedBuild2('event: regionDroppeds', recFields, {
+      where: whereClause,
+      limit: { value: limit, required: true },
+      offset: { value: offset, required: false },
+      orderBy: { value: 'id_DESC', required: true, type: '[RegionDroppedOrderByInput!]' },
+    });
+  }
+  
   eventAllContributionDropped(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(ContributionDroppedEvent)
     return advancedBuild2('event: contributionDroppeds', recFields, {
