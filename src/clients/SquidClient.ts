@@ -1,3 +1,5 @@
+/* eslint-disable quote-props */
+/* eslint-disable camelcase */
 /*
  * --------------------------------------------------------------------------------
  * This file is part of the LasticXYZ project.
@@ -14,14 +16,10 @@
 import { $fetch } from 'ofetch'
 import { getUrl } from '../indexers'
 import { getOptions } from '../indexers/utils'
-import { build, advancedBuild, advancedBuild2 } from '../queryBuilder'
+import { advancedBuild2 } from '../queryBuilder'
 import {
-  BaseEvent,
   GraphLike,
   GraphQuery,
-  KeyOf,
-  ObjProp,
-  QueryProps,
   HistoryInitializedEvent,
   SaleInitializedEvent,
   SalesStartedEvent,
@@ -77,19 +75,10 @@ import {
 } from '../types'
 
 import {
-  defaultField,
-  genericCountQuery,
-  getFields,
-  getRecursiveFields,
   getRecursiveFieldstoArr,
-  includeBurned,
-  optionToQuery,
 } from './defaults'
 
 class SquidClient {
-  constructor() {
-  }
-
   // Returns how many cores have been sold in a specific sale
   coresSoldInThisSale(begin: number): GraphQuery {
     return {
@@ -103,7 +92,7 @@ class SquidClient {
     }
   }
 
-  eventAllNewMultisigs(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllNewMultisigs(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(PurchasedEvent)
     return advancedBuild2('event: newMultisigs', recFields, {
       limit: { value: limit, required: true },
@@ -112,7 +101,7 @@ class SquidClient {
     })
   }
 
-  eventAllHistoryInitialized(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllHistoryInitialized(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(HistoryInitializedEvent)
     return advancedBuild2('event: historyInitializeds', recFields, {
       limit: { value: limit, required: true },
@@ -121,7 +110,7 @@ class SquidClient {
     })
   }
 
-  eventAllSaleInitialized(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllSaleInitialized(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(SaleInitializedEvent)
     return advancedBuild2('event: saleInitializeds', recFields, {
       limit: { value: limit, required: true },
@@ -130,7 +119,7 @@ class SquidClient {
     })
   }
 
-  eventAllSalesStarted(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllSalesStarted(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(SalesStartedEvent)
     return advancedBuild2('event: salesStarteds', recFields, {
       limit: { value: limit, required: true },
@@ -139,7 +128,7 @@ class SquidClient {
     })
   }
 
-  eventAllCoreOwner(begin_gte: number = 0, begin_lt: number = undefined, limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllCoreOwner(begin_gte = 0, begin_lt = undefined, limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(CoreOwnerEvent);
     const whereClause = {
       value: {
@@ -156,7 +145,7 @@ class SquidClient {
     });
   }
 
-  eventOwnedAndAssignedCoreOwner(owner: string, limit: number = 10, offset: number = 0): GraphQuery {
+  eventOwnedAndAssignedCoreOwner(owner: string, limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(CoreOwnerEvent)
     const whereClause = {
       value: {
@@ -174,7 +163,7 @@ class SquidClient {
     })
   }
 
-  eventOwnedAndPooledCoreOwner(owner: string, limit: number = 10, offset: number = 0): GraphQuery {
+  eventOwnedAndPooledCoreOwner(owner: string, limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(CoreOwnerEvent)
     const whereClause = {
       value: {
@@ -192,7 +181,7 @@ class SquidClient {
     })
   }
 
-  eventWhoCoreOwner(owner: string, begin_gte: number = 0, begin_lt: number = undefined, limit: number = 10, offset: number = 0): GraphQuery {
+  eventWhoCoreOwner(owner: string, begin_gte = 0, begin_lt = undefined, limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(CoreOwnerEvent)
     const whereClause = {
       value: {
@@ -213,7 +202,7 @@ class SquidClient {
     })
   }
 
-  eventSpecificRegionCoreOwner(coreNb: number, begin: number, mask: string, limit: number = 10, offset: number = 0): GraphQuery {
+  eventSpecificRegionCoreOwner(coreNb, begin, mask: string, limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(CoreOwnerEvent)
     return advancedBuild2('event: coreOwners', recFields, {
       where: { 
@@ -233,7 +222,7 @@ class SquidClient {
     })
   }
 
-  eventAllPurchased(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllPurchased(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(PurchasedEvent)
     return advancedBuild2('event: purchaseds', recFields, {
       limit: { value: limit, required: true },
@@ -242,7 +231,7 @@ class SquidClient {
     })
   }
 
-  eventWhoPurchased(who: string, limit: number = 10, offset: number = 0): GraphQuery {
+  eventWhoPurchased(who: string, limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(PurchasedEvent)
     return advancedBuild2('event: purchaseds', recFields, {
       where: { 
@@ -258,7 +247,7 @@ class SquidClient {
     })
   }
 
-  eventCorePurchased(coreNb: number, limit: number = 10, offset: number = 0): GraphQuery {
+  eventCorePurchased(coreNb, limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(PurchasedEvent)
     return advancedBuild2('event: purchaseds', recFields, {
       where: { 
@@ -274,7 +263,7 @@ class SquidClient {
     })
   }
 
-  eventAllRenewable(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllRenewable(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(RenewableEvent)
     return advancedBuild2('event: renewables', recFields, {
       limit: { value: limit, required: true },
@@ -283,7 +272,7 @@ class SquidClient {
     })
   }
 
-  eventAllRenewed(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllRenewed(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(RenewedEvent)
     return advancedBuild2('event: reneweds', recFields, {
       limit: { value: limit, required: true },
@@ -292,7 +281,7 @@ class SquidClient {
     })
   }
 
-  eventAllTransferred(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllTransferred(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(TransferredEvent)
     return advancedBuild2('event: transferreds', recFields, {
       limit: { value: limit, required: true },
@@ -314,7 +303,7 @@ class SquidClient {
     })
   }
 
-  eventCoreTransferred(coreNb: number): GraphQuery {
+  eventCoreTransferred(coreNb): GraphQuery {
     const recFields = getRecursiveFieldstoArr(TransferredEvent)
     return advancedBuild2('event: transferreds', recFields, {
       where: { 
@@ -328,7 +317,7 @@ class SquidClient {
   }
 
 
-  eventAllPartitioned(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllPartitioned(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(PartitionedEvent)
     return advancedBuild2('event: partitioneds', recFields, {
       limit: { value: limit, required: true },
@@ -337,7 +326,7 @@ class SquidClient {
     })
   }
 
-  eventAllInterlaced(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllInterlaced(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(InterlacedEvent)
     return advancedBuild2('event: interlaceds', recFields, {
       limit: { value: limit, required: true },
@@ -346,7 +335,7 @@ class SquidClient {
     })
   }
 
-  eventAllAssigned(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllAssigned(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(AssignedEvent)
     return advancedBuild2('event: assigneds', recFields, {
       limit: { value: limit, required: true },
@@ -355,7 +344,7 @@ class SquidClient {
     })
   }
 
-  eventAllPooled(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllPooled(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(PooledEvent)
     return advancedBuild2('event: pooleds', recFields, {
       limit: { value: limit, required: true },
@@ -364,7 +353,7 @@ class SquidClient {
     })
   }
 
-  eventAllCoreCountRequested(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllCoreCountRequested(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(CoreCountRequestedEvent)
     return advancedBuild2('event: coreCountRequesteds', recFields, {
       limit: { value: limit, required: true },
@@ -373,7 +362,7 @@ class SquidClient {
     })
   }
 
-  eventAllCoreCountChanged(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllCoreCountChanged(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(CoreCountChangedEvent)
     return advancedBuild2('event: coreCountChangeds', recFields, {
       limit: { value: limit, required: true },
@@ -382,7 +371,7 @@ class SquidClient {
     })
   }
 
-  eventAllReservationMade(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllReservationMade(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(ReservationMadeEvent)
     return advancedBuild2('event: reservationMades', recFields, {
       limit: { value: limit, required: true },
@@ -391,7 +380,7 @@ class SquidClient {
     })
   }
 
-  eventAllReservationCancelled(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllReservationCancelled(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(ReservationCancelledEvent)
     return advancedBuild2('event: reservationCancelleds', recFields, {
       limit: { value: limit, required: true },
@@ -400,7 +389,7 @@ class SquidClient {
     })
   }
 
-  eventAllLeased(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllLeased(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(LeasedEvent)
     return advancedBuild2('event: leaseds', recFields, {
       limit: { value: limit, required: true },
@@ -409,7 +398,7 @@ class SquidClient {
     })
   }
 
-  eventAllLeaseEnding(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllLeaseEnding(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(LeaseEndingEvent)
     return advancedBuild2('event: leaseEndings', recFields, {
       limit: { value: limit, required: true },
@@ -418,7 +407,7 @@ class SquidClient {
     })
   }
 
-  eventAllRevenueClaimBegun(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllRevenueClaimBegun(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(RevenueClaimBegunEvent)
     return advancedBuild2('event: revenueClaimBeguns', recFields, {
       limit: { value: limit, required: true },
@@ -427,7 +416,7 @@ class SquidClient {
     })
   }
 
-  eventAllRevenueClaimItem(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllRevenueClaimItem(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(RevenueClaimItemEvent)
     return advancedBuild2('event: revenueClaimItems', recFields, {
       limit: { value: limit, required: true },
@@ -436,7 +425,7 @@ class SquidClient {
     })
   }
 
-  eventAllRevenueClaimPaid(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllRevenueClaimPaid(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(RevenueClaimPaidEvent)
     return advancedBuild2('event: revenueClaimPaids', recFields, {
       limit: { value: limit, required: true },
@@ -445,7 +434,7 @@ class SquidClient {
     })
   }
 
-  eventAllCreditPurchased(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllCreditPurchased(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(CreditPurchasedEvent)
     return advancedBuild2('event: creditPurchaseds', recFields, {
       limit: { value: limit, required: true },
@@ -454,7 +443,7 @@ class SquidClient {
     })
   }
 
-  eventAllRegionDropped(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllRegionDropped(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(RegionDroppedEvent)
     return advancedBuild2('event: regionDroppeds', recFields, {
       limit: { value: limit, required: true },
@@ -463,7 +452,7 @@ class SquidClient {
     })
   }
 
-  eventAllContributionDropped(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllContributionDropped(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(ContributionDroppedEvent)
     return advancedBuild2('event: contributionDroppeds', recFields, {
       limit: { value: limit, required: true },
@@ -472,7 +461,7 @@ class SquidClient {
     })
   }
 
-  eventAllHistoryDropped(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllHistoryDropped(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(HistoryDroppedEvent)
     return advancedBuild2('event: historyDroppeds', recFields, {
       limit: { value: limit, required: true },
@@ -481,7 +470,7 @@ class SquidClient {
     })
   }
 
-  eventAllHistoryIgnored(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllHistoryIgnored(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(HistoryIgnoredEvent)
     return advancedBuild2('event: historyIgnoreds', recFields, {
       limit: { value: limit, required: true },
@@ -490,7 +479,7 @@ class SquidClient {
     })
   }
 
-  eventAllClaimsReady(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllClaimsReady(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(ClaimsReadyEvent)
     return advancedBuild2('event: claimsReadies', recFields, {
       limit: { value: limit, required: true },
@@ -499,7 +488,7 @@ class SquidClient {
     })
   }
 
-  eventAllCoreAssigned(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllCoreAssigned(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(CoreAssignedEvent)
     return advancedBuild2('event: coreAssigneds', recFields, {
       limit: { value: limit, required: true },
@@ -508,7 +497,7 @@ class SquidClient {
     })
   }
 
-  eventAllAllowedRenewalDropped(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllAllowedRenewalDropped(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(AllowedRenewalDroppedEvent)
     return advancedBuild2('event: allowedRenewalDroppeds', recFields, {
       limit: { value: limit, required: true },
@@ -517,7 +506,7 @@ class SquidClient {
     })
   }
 
-  callAllConfigure(limit: number = 10, offset: number = 0): GraphQuery {
+  callAllConfigure(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(ConfigureCall)
     return advancedBuild2('call: configureExts', recFields, {
       limit: { value: limit, required: true },
@@ -526,7 +515,7 @@ class SquidClient {
     })
   }
 
-  callAllReserve(limit: number = 10, offset: number = 0): GraphQuery {
+  callAllReserve(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(ReserveCall)
     return advancedBuild2('call: reserveExts', recFields, {
       limit: { value: limit, required: true },
@@ -535,7 +524,7 @@ class SquidClient {
     })
   }
 
-  callAllUnreserve(limit: number = 10, offset: number = 0): GraphQuery {
+  callAllUnreserve(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(UnreserveCall)
     return advancedBuild2('call: unreserveExts', recFields, {
       limit: { value: limit, required: true },
@@ -544,7 +533,7 @@ class SquidClient {
     })
   }
 
-  callAllSetLease(limit: number = 10, offset: number = 0): GraphQuery {
+  callAllSetLease(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(SetLeaseCall)
     return advancedBuild2('call: setLeaseExts', recFields, {
       limit: { value: limit, required: true },
@@ -553,7 +542,7 @@ class SquidClient {
     })
   }
 
-  callAllStartSales(limit: number = 10, offset: number = 0): GraphQuery {
+  callAllStartSales(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(StartSalesCall)
     return advancedBuild2('call: startSalesExts', recFields, {
       limit: { value: limit, required: true },
@@ -562,7 +551,7 @@ class SquidClient {
     })
   }
 
-  callAllPurchase(limit: number = 10, offset: number = 0): GraphQuery {
+  callAllPurchase(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(PurchaseCall)
     return advancedBuild2('call: purchaseExts', recFields, {
       limit: { value: limit, required: true },
@@ -571,7 +560,7 @@ class SquidClient {
     })
   }
 
-  callAllRenew(limit: number = 10, offset: number = 0): GraphQuery {
+  callAllRenew(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(RenewCall)
     return advancedBuild2('call: renewExts', recFields, {
       limit: { value: limit, required: true },
@@ -580,7 +569,7 @@ class SquidClient {
     })
   }
 
-  callAllTransfer(limit: number = 10, offset: number = 0): GraphQuery {
+  callAllTransfer(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(TransferCall)
     return advancedBuild2('call: transferExts', recFields, {
       limit: { value: limit, required: true },
@@ -589,7 +578,7 @@ class SquidClient {
     })
   }
 
-  callAllPartition(limit: number = 10, offset: number = 0): GraphQuery {
+  callAllPartition(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(PartitionCall)
     return advancedBuild2('call: partitionExts', recFields, {
       limit: { value: limit, required: true },
@@ -598,7 +587,7 @@ class SquidClient {
     })
   }
 
-  callAllInterlace(limit: number = 10, offset: number = 0): GraphQuery {
+  callAllInterlace(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(InterlaceCall)
     return advancedBuild2('call: interlaceExts', recFields, {
       limit: { value: limit, required: true },
@@ -607,7 +596,7 @@ class SquidClient {
     })
   }
 
-  callAllAssign(limit: number = 10, offset: number = 0): GraphQuery {
+  callAllAssign(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(AssignCall)
     return advancedBuild2('call: assignExts', recFields, {
       limit: { value: limit, required: true },
@@ -616,7 +605,7 @@ class SquidClient {
     })
   }
 
-  callAllPool(limit: number = 10, offset: number = 0): GraphQuery {
+  callAllPool(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(PoolCall)
     return advancedBuild2('call: poolExts', recFields, {
       limit: { value: limit, required: true },
@@ -625,7 +614,7 @@ class SquidClient {
     })
   }
 
-  callAllClaimRevenue(limit: number = 10, offset: number = 0): GraphQuery {
+  callAllClaimRevenue(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(ClaimRevenueCall)
     return advancedBuild2('call: claimRevenueExts', recFields, {
       limit: { value: limit, required: true },
@@ -634,7 +623,7 @@ class SquidClient {
     })
   }
 
-  callAllPurchaseCredit(limit: number = 10, offset: number = 0): GraphQuery {
+  callAllPurchaseCredit(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(PurchaseCreditCall)
     return advancedBuild2('call: purchaseCreditExts', recFields, {
       limit: { value: limit, required: true },
@@ -643,7 +632,7 @@ class SquidClient {
     })
   }
 
-  callAllDropRegion(limit: number = 10, offset: number = 0): GraphQuery {
+  callAllDropRegion(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(DropRegionCall)
     return advancedBuild2('call: dropRegionExts', recFields, {
       limit: { value: limit, required: true },
@@ -652,7 +641,7 @@ class SquidClient {
     })
   }
 
-  callAllDropContribution(limit: number = 10, offset: number = 0): GraphQuery {
+  callAllDropContribution(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(DropContributionCall)
     return advancedBuild2('call: dropContributionExts', recFields, {
       limit: { value: limit, required: true },
@@ -661,7 +650,7 @@ class SquidClient {
     })
   }
 
-  callAllDropHistory(limit: number = 10, offset: number = 0): GraphQuery {
+  callAllDropHistory(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(DropHistoryCall)
     return advancedBuild2('call: dropHistoryExts', recFields, {
       limit: { value: limit, required: true },
@@ -670,7 +659,7 @@ class SquidClient {
     })
   }
 
-  callAllDropRenewal(limit: number = 10, offset: number = 0): GraphQuery {
+  callAllDropRenewal(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(DropRenewalCall)
     return advancedBuild2('call: dropRenewalExts', recFields, {
       limit: { value: limit, required: true },
@@ -679,7 +668,7 @@ class SquidClient {
     })
   }
 
-  callAllRequestCoreCount(limit: number = 10, offset: number = 0): GraphQuery {
+  callAllRequestCoreCount(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(RequestCoreCountCall)
     return advancedBuild2('call: requestCoreCountExts', recFields, {
       limit: { value: limit, required: true },
@@ -689,7 +678,7 @@ class SquidClient {
   }
 
   // Multisig Events 
-  eventAllNewMultisig(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllNewMultisig(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(NewMultisigEvent)
     return advancedBuild2('event: newMultisigs', recFields, {
       limit: { value: limit, required: true },
@@ -698,7 +687,7 @@ class SquidClient {
     })
   }
 
-  eventAllMultisigApproval(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllMultisigApproval(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(MultisigApprovalEvent)
     return advancedBuild2('event: multisigApprovals', recFields, {
       limit: { value: limit, required: true },
@@ -707,7 +696,7 @@ class SquidClient {
     })
   }
 
-  eventAllMultisigExecuted(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllMultisigExecuted(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(MultisigExecutedEvent)
     return advancedBuild2('event: multisigExecuteds', recFields, {
       limit: { value: limit, required: true },
@@ -716,7 +705,7 @@ class SquidClient {
     })
   }
 
-  eventAllMultisigCancelled(limit: number = 10, offset: number = 0): GraphQuery {
+  eventAllMultisigCancelled(limit = 10, offset = 0): GraphQuery {
     const recFields = getRecursiveFieldstoArr(MultisigCancelledEvent)
     return advancedBuild2('event: multisigCancelleds', recFields, {
       limit: { value: limit, required: true },
