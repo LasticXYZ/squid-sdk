@@ -1,18 +1,13 @@
 import { expect, it, describe } from 'vitest'
-import { getClient, getUrl } from '../src'
-import { parsePath, pathToRequest } from '../src/rest/path'
-import { extendFields, getFields, getRecursiveFields, getRecursiveFieldstoArr, includeBurned } from '../src/clients/defaults'
+import { parsePath } from '../src/rest/path'
+import { getFields, getRecursiveFieldstoArr } from '../src/clients/defaults'
 import { 
-    BaseEvent,
     GraphLike,
     SaleInitializedEvent,
-    PurchasedEvent,
-    SalesStartedEvent,
-    RenewableEvent,
-    PartitionedEvent,
-    CoreAssignedEvent
+    CoreAssignedEvent,
+    getClient, getUrl 
 } from '../src'
-import { advancedBuild2, formatFields } from '../src/queryBuilder'
+import { advancedBuild2 } from '../src/queryBuilder'
 
 
 describe('UNIQUERY UTILS', () => {
@@ -55,50 +50,9 @@ describe('UNIQUERY UTILS', () => {
         ]
       )
     })
-
-    it('should return recursive fields 2', () => {
-      //const fields = getRecursiveFields(CoreAssignedEvent)
-      const who = "EhohRc1CCHfMDRDgkwrfePjBE8GcoyRarPAh8nLY1wX95d1"
-      const field2 = getRecursiveFieldstoArr(CoreAssignedEvent)
-      const build = advancedBuild2('event: purchased', field2, {
-        where: { type: 'String', required: true, value: who, name: 'who_eq' }}
-      );
-      
-      // const queryArr = formatFieldsToArray(fields)
-      // const queryStr = formatFields(fields)
-      //console.log(field2);
-      //console.log(JSON.stringify(field2, null, 2));
-      //console.log(build);
-
-    })
   })
 
-  describe('test2 eventAllSaleInitialized', () => {
-    it('should fetch data successfully', async () => {
-      const client = getClient();
-      const query = {
-        query: `query {
-          event: purchaseds {
-            blockNumber
-            duration
-            id
-            price
-            regionId {
-              begin
-              core
-              mask
-            }
-            timestamp
-          }
-        }`,
-        variables: {}
-      };
   
-      //const result = await client.fetch(query);
-      //console.log(JSON.stringify(result, null, 2));
-
-    });
-  });
 
   describe('test eventAllSaleInitialized', () => {
     it('should fetch data successfully', async () => { // Marked as async
@@ -107,7 +61,6 @@ describe('UNIQUERY UTILS', () => {
 
       // Assuming you're testing the fetch operation's result
       const result: GraphLike<SaleInitializedEvent[]> = await client.fetch("rococo", query)
-      //console.log(result.data.event);
 
       expect(result).toHaveProperty('data.event')
     })
@@ -117,10 +70,8 @@ describe('UNIQUERY UTILS', () => {
     it('should fetch data successfully', async () => { // Marked as async
       const client = getClient()
       const query = client.eventCorePurchased(54)
-      //console.log(query);
       // Assuming you're testing the fetch operation's result
       const result = await client.fetch("rococo", query)
-      //console.log(result.data.event);
 
       expect(result).toHaveProperty('data.event')
     })
@@ -204,9 +155,7 @@ describe('UNIQUERY UTILS', () => {
       it(`should fetch data successfully for ${type}`, async () => {
         const query = func.call(client); // Call the function on the client instance
         const result = await client.fetch("rococo", query); // Fetch the data
-        
-        //console.log(result.data.call); // Optional: Log for debugging
-        
+                
         expect(result).toHaveProperty('data.call'); // General assertion; adjust as needed
       });
     });
@@ -216,37 +165,32 @@ describe('UNIQUERY UTILS', () => {
   describe("Core Owners Query", () => {
     const client = getClient();
     it("should fetch data successfully", async () => {
-      const query = client.eventAllCoreOwner(126859, 127174);
+      const query = client.eventAllCoreOwner(126_859, 127_174);
       const result = await client.fetch("rococo", query);
-      //console.log(result.data.event);
       expect(result).toHaveProperty('data.event');
     });
 
     it("should fetch data by specific owner successfully", async () => {
-      const query = client.eventWhoCoreOwner("5GxBaAJmPQAen737CXsHoWX2WpsarY2awq26cLmpdN1K2Shc", 126690, 127950);
+      const query = client.eventWhoCoreOwner("5GxBaAJmPQAen737CXsHoWX2WpsarY2awq26cLmpdN1K2Shc", 126_690, 127_950);
       const result = await client.fetch("rococo", query);
-      //console.log(result.data.event);
       expect(result).toHaveProperty('data.event');
     });
 
     it("should fetch data of a specific region", async () => {
-      const query = client.eventSpecificRegionCoreOwner(78, 126859, "0xffffffffffffffffffff");
+      const query = client.eventSpecificRegionCoreOwner(78, 126_859, "0xffffffffffffffffffff");
       const result = await client.fetch("rococo", query);
-      //console.log(result.data.event);
       expect(result).toHaveProperty('data.event');
     });
 
     it("should fetch data of owned and assigned core owner", async () => {
       const query = client.eventOwnedAndAssignedCoreOwner("5GxBaAJmPQAen737CXsHoWX2WpsarY2awq26cLmpdN1K2Shc");
       const result = await client.fetch("rococo", query);
-      //console.log(result.data.event);
       expect(result).toHaveProperty('data.event');
     });
 
     it("should fetch data of owned and pooled core owner", async () => {
       const query = client.eventOwnedAndPooledCoreOwner("5HNJjkjo3KGA3R1DanS82R47tV7G3avEZ8GzLDW9CQtkNjVW");
       const result = await client.fetch("rococo", query);
-      //console.log(result.data.event);
       expect(result).toHaveProperty('data.event');
     });
 
@@ -255,7 +199,7 @@ describe('UNIQUERY UTILS', () => {
   describe("Cores Sold In this Sale", () => {
     it("should fetch data successfully", async () => {
       const client = getClient();
-      const query = client.coresSoldInThisSale(127950);
+      const query = client.coresSoldInThisSale(127_950);
       const result = await client.fetch("rococo", query);
       console.log(result.data.event);
       expect(result).toHaveProperty('data.event');

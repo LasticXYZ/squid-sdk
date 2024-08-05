@@ -19,11 +19,11 @@ const LocalhostSquidEndpoint = 'http://localhost:4350/graphql'
 const RococoSquidEndpoint = 'https://lastic.squids.live/rococo-coretime/graphql'
 const KusamaSquidEndpoint = 'https://lastic.squids.live/kusama-coretime/graphql'
 
-function getUrl(rpc_name: string): string {
-  if (rpc_name === 'dev') {
+function getUrl(rpcName: string): string {
+  if (rpcName === 'dev') {
     return LocalhostSquidEndpoint
   }
-  if (rpc_name === 'rococo') {
+  if (rpcName === 'rococo') {
     return RococoSquidEndpoint
   }
   return KusamaSquidEndpoint

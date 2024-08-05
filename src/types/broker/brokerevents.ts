@@ -1,70 +1,70 @@
-import { RegionId, ScheduleItem, NewRegionIds, CoreAssignment_Wrap } from './helper';
+import { RegionId, ScheduleItem, NewRegionIds, CoreAssignmentWrap } from './helper';
 
 class HistoryInitializedEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
-    when: number | null = null;
-    privatePoolSize: number | null = null;
-    systemPoolSize: number | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
+    when: number | undefined = undefined;
+    privatePoolSize: number | undefined = undefined;
+    systemPoolSize: number | undefined = undefined;
 }
 
 class SaleInitializedEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
-    saleStart: number | null = null;
-    leadinLength: number | null = null;
-    startPrice: string | null = null;
-    regularPrice: string | null = null;
-    regionBegin: number | null = null;
-    regionEnd: number | null = null;
-    idealCoresSold: number | null = null;
-    coresOffered: number | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
+    saleStart: number | undefined = undefined;
+    leadinLength: number | undefined = undefined;
+    startPrice: string | undefined = undefined;
+    regularPrice: string | undefined = undefined;
+    regionBegin: number | undefined = undefined;
+    regionEnd: number | undefined = undefined;
+    idealCoresSold: number | undefined = undefined;
+    coresOffered: number | undefined = undefined;
 }
 
 class SalesStartedEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    extrinsicHash?: string | null = null;
-    price: string | null = null;
-    coreCount: number | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    extrinsicHash?: string | undefined = undefined;
+    price: string | undefined = undefined;
+    coreCount: number | undefined = undefined;
 }
 
 class PurchasedEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    who: string | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    who: string | undefined = undefined;
     regionId: RegionId = new RegionId();
-    price: string | null = null;
-    duration: number | null = null;
+    price: string | undefined = undefined;
+    duration: number | undefined = undefined;
 }
 
 class CoreOwnerEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    owner: string | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    owner: string | undefined = undefined;
     regionId: RegionId = new RegionId();
-    price: string | null = null;
-    duration: number | null = null;
-    pooled: boolean | null = null;
-    assigned: boolean | null = null;
-    task: number | null = null;
+    price: string | undefined = undefined;
+    duration: number | undefined = undefined;
+    pooled: boolean | undefined = undefined;
+    assigned: boolean | undefined = undefined;
+    task: number | undefined = undefined;
 }
 
 
 class RenewableEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    core: number | null = null;
-    price: string | null = null;
-    begin: number | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    core: number | undefined = undefined;
+    price: string | undefined = undefined;
+    begin: number | undefined = undefined;
     workload: ScheduleItem[] = [];
 
     constructor() {
@@ -73,15 +73,15 @@ class RenewableEvent {
 }
 
 class RenewedEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    who: string | null = null;
-    price: string | null = null;
-    oldCore: number | null = null;
-    core: number | null = null;
-    begin: number | null = null;
-    duration: number | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    who: string | undefined = undefined;
+    price: string | undefined = undefined;
+    oldCore: number | undefined = undefined;
+    core: number | undefined = undefined;
+    begin: number | undefined = undefined;
+    duration: number | undefined = undefined;
     workload: ScheduleItem[] = [];
 
     constructor() {
@@ -90,67 +90,67 @@ class RenewedEvent {
 }
 
 class TransferredEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
     regionId: RegionId = new RegionId();
-    duration: number | null = null;
-    oldOwner: string | null = null;
-    owner: string | null = null;
+    duration: number | undefined = undefined;
+    oldOwner: string | undefined = undefined;
+    owner: string | undefined = undefined;
 }
 
 class PartitionedEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
     oldRegionId: RegionId = new RegionId();
     newRegionIds: NewRegionIds = new NewRegionIds();
 }
 
 class InterlacedEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
     oldRegionId: RegionId = new RegionId();
     newRegionIds: NewRegionIds = new NewRegionIds();
 }
 
 class AssignedEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
     regionId: RegionId = new RegionId();
-    duration: number | null = null;
-    task: number | null = null;
+    duration: number | undefined = undefined;
+    task: number | undefined = undefined;
 }
 
 class PooledEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
     regionId: RegionId = new RegionId();
-    duration: number | null = null;
+    duration: number | undefined = undefined;
 }
 
 class CoreCountRequestedEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    coreCount: number | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    coreCount: number | undefined = undefined;
 }
 
 class CoreCountChangedEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    coreCount: number | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    coreCount: number | undefined = undefined;
 }
 
 class ReservationMadeEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    index: number | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    index: number | undefined = undefined;
     workload: ScheduleItem[] = [];
 
     constructor() {
@@ -158,10 +158,10 @@ class ReservationMadeEvent {
     }}
 
 class ReservationCancelledEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    index: number | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    index: number | undefined = undefined;
     workload: ScheduleItem[] = [];
 
     constructor() {
@@ -170,114 +170,114 @@ class ReservationCancelledEvent {
 }
 
 class LeasedEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    task: number | null = null;
-    until: number | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    task: number | undefined = undefined;
+    until: number | undefined = undefined;
 }
 
 class LeaseEndingEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    task: number | null = null;
-    when: number | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    task: number | undefined = undefined;
+    when: number | undefined = undefined;
 }
 
 class RevenueClaimBegunEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
     region: RegionId = new RegionId();
-    maxTimeslices: number | null = null;
+    maxTimeslices: number | undefined = undefined;
 }
 
 class RevenueClaimItemEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    who: string | null = null;
-    amount: bigint | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    who: string | undefined = undefined;
+    amount: bigint | undefined = undefined;
 }
 
 class RevenueClaimPaidEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    who: string | null = null;
-    amount: bigint | null = null;
-    next: number | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    who: string | undefined = undefined;
+    amount: bigint | undefined = undefined;
+    next: number | undefined = undefined;
 }
 
 class CreditPurchasedEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    who: string | null = null;
-    beneficiary: string | null = null;
-    amount: bigint | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    who: string | undefined = undefined;
+    beneficiary: string | undefined = undefined;
+    amount: bigint | undefined = undefined;
 }
 
 class RegionDroppedEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
     regionId: RegionId = new RegionId();
-    duration: number | null = null;
+    duration: number | undefined = undefined;
 }
 
 class ContributionDroppedEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
     regionId: RegionId = new RegionId();
 }
 
 class HistoryDroppedEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    when: number | null = null;
-    revenue: bigint | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    when: number | undefined = undefined;
+    revenue: bigint | undefined = undefined;
 }
 
 class HistoryIgnoredEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    when: number | null = null;
-    revenue: bigint | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    when: number | undefined = undefined;
+    revenue: bigint | undefined = undefined;
 }
 
 class ClaimsReadyEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    when: number | null = null;
-    systemPayout: bigint | null = null;
-    privatePayout: bigint | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    when: number | undefined = undefined;
+    systemPayout: bigint | undefined = undefined;
+    privatePayout: bigint | undefined = undefined;
 }
 
 class CoreAssignedEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    core: number | null = null;
-    when: number | null = null;
-    assignment: CoreAssignment_Wrap[] = [];
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    core: number | undefined = undefined;
+    when: number | undefined = undefined;
+    assignment: [] = [];
 
     constructor() {
-        this.assignment.push(new CoreAssignment_Wrap());
+        this.assignment.push(new CoreAssignmentWrap());
     }
 }
 
 class AllowedRenewalDroppedEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    when: number | null = null;
-    core: number | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    when: number | undefined = undefined;
+    core: number | undefined = undefined;
 }
 
 

@@ -1,46 +1,45 @@
 import { Timepoint } from "./helper"
 
 class ResultType {
-    kind: string | null = null;
+    kind: string | undefined = undefined;
 }
 class NewMultisigEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    approving: string | null = null;
-    multisig: string | null = null;
-    callHash?: string | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    approving: string | undefined = undefined;
+    multisig: string | undefined = undefined;
+    callHash?: string | undefined = undefined;
 }
 
 class MultisigApprovalEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    approving: string | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    approving: string | undefined = undefined;
     timepoint: Timepoint = new Timepoint();
-    callHash?: string | null = null;
+    callHash?: string | undefined = undefined;
 }
 
 class MultisigExecutedEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    approving: string | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    approving: string | undefined = undefined;
     timepoint: Timepoint = new Timepoint();
-    multisig: string | null = null;
-    callHash?: string | null = null;
+    multisig: string | undefined = undefined;
+    callHash?: string | undefined = undefined;
     result: ResultType = new ResultType();
-
 }
 
 class MultisigCancelledEvent {
-    id: string | null = null;
-    blockNumber: number | null = null;
-    timestamp: Date | null = null;
-    cancelling: string | null = null;
+    id: string | undefined = undefined;
+    blockNumber: number | undefined = undefined;
+    timestamp: Date | undefined = undefined;
+    cancelling: string | undefined = undefined;
     timepoint: Timepoint = new Timepoint();
-    multisig: string | null = null;
-    callHash?: string | null = null;
+    multisig: string | undefined = undefined;
+    callHash?: string | undefined = undefined;
 }
 
 

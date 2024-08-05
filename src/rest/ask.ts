@@ -20,11 +20,11 @@ import { GraphLike } from './types'
 const GRAPHQL_PATH = '/graphql'
 
 function askFor<T>(
-  rpc_name: string,
+  rpcName: string,
   path: string,
   options?: QueryProps<T>,
 ): Promise<GraphLike<T>> {
-  const request = pathToRequest(rpc_name, path, options)
+  const request = pathToRequest(rpcName, path, options)
   const opts = getOptions(request)
   return $fetch<GraphLike<T>>(GRAPHQL_PATH, opts)
 }

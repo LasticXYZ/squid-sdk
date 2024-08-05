@@ -27,20 +27,15 @@ function build(
   })
 }
 
-const formatFields = (fields: FieldListDif): string => {
-  if (typeof fields === 'string') {
-    return fields;
-  } else {
-    return Object.entries(fields).map(([key, value]) => {
-      if (typeof value === 'string') {
-        return value;
-      } else {
-        // Recursively format nested fields
-        return `${key} { ${formatFields(value)} }`;
-      }
-    }).join(' ');
-  }
-};
+const formatFields = (fields: FieldListDif): string => 
+  typeof fields === 'string' 
+    ? fields 
+    : Object.entries(fields).map(([key, value]) => 
+        typeof value === 'string' 
+          ? value 
+          : `${key} { ${formatFields(value)} }`
+      ).join(' ');
+
 
 function advancedBuild(
   operation: string,
@@ -56,69 +51,16 @@ function advancedBuild(
   };
 }
 
-// const formatFieldsToArray = (fields: FieldListDif): any[] => {
-//   const resultArray = [];
-
-//   for (const [key, value] of Object.entries(fields)) {
-//     if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-//       // If the value is a nested object, recurse
-//       const nestedObject = {};
-//       nestedObject[key] = formatFieldsToArray(value);
-//       resultArray.push(nestedObject);
-//     } else {
-//       // For primitive values, push the key directly
-//       resultArray.push(key);
-//     }
-//   }
-
-//   return resultArray;
-// }
-
-
-// const formatFieldsToArray = (fields: FieldListDif): any[] => {
-//   const resultArray = [];
-
-//   for (const [key, value] of Object.entries(fields)) {
-//     if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-//       // Check if the nested object should be directly converted to an array or kept as an object with an array value
-//       const isDeepNested = Object.values(value).some(val => typeof val === 'object' && val !== null);
-//       if (isDeepNested) {
-//         // If the nested object contains further nested objects, recurse
-//         const nestedArray = formatFieldsToArray(value);
-//         const nestedObject = {};
-//         nestedObject[key] = nestedArray;
-//         resultArray.push(nestedObject);
-//       } else {
-//         // If the nested object does not contain further nested objects, convert it to an array including its keys
-//         const shallowNestedArray = Object.entries(value).map(([nestedKey, nestedValue]) => {
-//           return typeof nestedValue === 'object' ? {[nestedKey]: formatFieldsToArray(nestedValue)} : nestedValue;
-//         });
-//         const nestedObject = {};
-//         nestedObject[key] = shallowNestedArray;
-//         resultArray.push(nestedObject);
-//       }
-//     } else {
-//       // For primitive values, push the key directly
-//       resultArray.push(key);
-//     }
-//   }
-
-//   return resultArray;
-// }
-
-
-
 function advancedBuild2(
   operation: string,
   fields: FieldArr,
   variables?: KeyValue,
 ): GraphQuery {
   return query({
-    operation: operation,
-    variables: variables,
-    fields: fields
-  })
+    operation,
+    variables,
+    fields
+  });
 }
 
-
-export {formatFields, build, advancedBuild, advancedBuild2}
+export { formatFields, build, advancedBuild, advancedBuild2 }
