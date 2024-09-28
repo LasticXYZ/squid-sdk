@@ -265,7 +265,7 @@ class CoreAssignedEvent {
     timestamp: Date | undefined = undefined;
     core: number | undefined = undefined;
     when: number | undefined = undefined;
-    assignment: [] = [];
+    assignment: CoreAssignmentWrap[] = [];
 
     constructor() {
         this.assignment.push(new CoreAssignmentWrap());

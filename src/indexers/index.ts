@@ -18,6 +18,7 @@ import { getOptions } from './utils'
 const LocalhostSquidEndpoint = 'http://localhost:4350/graphql'
 const RococoSquidEndpoint = 'https://lastic.squids.live/rococo-coretime/graphql'
 const KusamaSquidEndpoint = 'https://lastic.squids.live/kusama-coretime/graphql'
+const PolkadotSquidEndpoint = 'https://lastic.squids.live/polkadot-coretime/graphql'
 
 function getUrl(rpcName: string): string {
   if (rpcName === 'dev') {
@@ -25,6 +26,12 @@ function getUrl(rpcName: string): string {
   }
   if (rpcName === 'rococo') {
     return RococoSquidEndpoint
+  }
+  if (rpcName === 'kusama') {
+    return KusamaSquidEndpoint
+  }
+  if (rpcName === 'polkadot') {
+    return PolkadotSquidEndpoint
   }
   return KusamaSquidEndpoint
 }
