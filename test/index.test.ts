@@ -16,7 +16,7 @@ describe('UNIQUERY UTILS', () => {
       const url = getUrl("rococo")
       expect(url).eq('https://lastic.squids.live/rococo-coretime/graphql')
       const url2 = getUrl("kusama")
-      expect(url2).eq('https://lastic.squids.live/kusama-coretime/graphql')
+      expect(url2).eq('https://lastic.squids.live/kusama-coretime:production/api/graphql')
     })
   })
 
